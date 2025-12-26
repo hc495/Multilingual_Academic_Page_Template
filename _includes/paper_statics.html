@@ -1,0 +1,30 @@
+{%- assign sumpages = site.publication_statics.init_pages -%}
+{%- assign suminfl = site.publication_statics.init_if -%}
+{%- assign count = site.publication_statics.init_count -%}
+{%- assign venues = site.data.venues -%}
+
+{%- for item in site.publication_list -%}
+    {%- if item.calculate_statics -%}
+        {%- assign papers = site.data[item.file] -%}
+        {%- for item in papers -%}
+            {%- assign count = count | plus: 1 -%}
+            {%- assign pages = item.pages -%}
+            {%- assign venue = item.venue -%}
+            {%- if venues[venue] -%}
+                {%- assign infl = venues[venue].infl -%}
+            {%- else -%}
+                {%- assign infl = item.infl -%}
+            {%- endif -%}
+            {%- if pages -%}
+                {%- assign sumpages = sumpages | plus: pages -%}
+            {%- endif -%}
+            {%- if infl -%}
+                {%- assign suminfl = suminfl | plus: infl -%}
+            {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor -%}
+
+{%- assign lang = include.lang -%}
+
+{{ site.publication_statics.translations[lang].total_publications}} {{ count }}, {{ site.publication_statics.translations[lang].cif }} {{ suminfl }}, {{ site.publication_statics.translations[lang].pages }} {{ sumpages }}.

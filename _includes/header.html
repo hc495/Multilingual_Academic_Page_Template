@@ -1,0 +1,43 @@
+<head>
+
+<!-- Google Analytics -->
+{% if site.google_analytics %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+{% endif %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<!-- Math -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/combine/npm/katex@0.12.0/dist/katex.min.js,npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+  async="async"
+  onload='renderMathInElement(document.body, { delimiters: [{left: "$$", right: "$$", display: true}, { left: "$", right: "$", display: false }, {left: "\\(", right: "\\)", display: false}, {left: "\\[", right: "\\]", display: true}]})'
+></script>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ "/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+<title>{{ page.title | escape }}</title>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Gentium+Basic" />
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{{ site.fonts.includes }}
+
+{{ site.more_heads }}
+
+</head>
+    

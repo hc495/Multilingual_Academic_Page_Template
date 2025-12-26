@@ -1,0 +1,120 @@
+{%- if site.toc.enabled -%}
+<nav id="toc"></nav>
+{%- endif -%}
+
+<script>
+(function () {
+  const KEY = "site_lang";
+
+  function normalizeLang(lang) {
+    if (!lang) return null;
+    lang = lang.toLowerCase();
+    return lang;
+  }
+
+  function applyLang(lang) {
+    document.querySelectorAll(".lang").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".lang-" + lang).forEach(el => el.classList.add("active"));
+    localStorage.setItem(KEY, lang);
+
+    document.querySelectorAll(".lang-link").forEach(a => {
+      a.classList.toggle("active", a.dataset.lang === lang);
+    });
+
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+
+    if (window.updateTocForLang) window.updateTocForLang(lang);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const saved = normalizeLang(localStorage.getItem(KEY));
+    const auto = "en";
+    const lang = saved || auto;
+    applyLang(lang);
+
+    document.querySelectorAll(".lang-link").forEach(a => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        applyLang(a.dataset.lang);
+      });
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  const TOC_ID = "toc";
+  const CONTENT_SELECTOR = ".page-container .markdown-body";  
+  const HEADING_SELECTOR = "{{ site.toc.levels }}";
+
+  function slugify(s) {
+    return s.trim()
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\s-]/gu, "") 
+      .replace(/\s+/g, "-");
+  }
+
+  function ensureHeadingId(h, lang) {
+    if (h.id && h.id.startsWith(lang + "-")) return h.id;
+
+    const base = slugify(h.textContent);
+    let id = `${lang}-${base || "section"}`;
+    let k = 2;
+    while (document.getElementById(id)) {
+      id = `${lang}-${base || "section"}-${k++}`;
+    }
+    h.id = id;
+    return id;
+  }
+
+  function isVisible(el) {
+    return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  }
+
+  function buildToc(lang) {
+
+    const toc = document.getElementById(TOC_ID);
+    if (!toc) return;
+
+    const content = document.querySelector(CONTENT_SELECTOR);
+    if (!content) return;
+
+    const headings = Array.from(content.querySelectorAll(HEADING_SELECTOR)).filter(isVisible);
+
+    if (!headings.length) {
+      toc.innerHTML = "";
+      return;
+    }
+
+    const ul = document.createElement("ul");
+    headings.forEach(h => {
+      const id = ensureHeadingId(h, lang);
+      const li = document.createElement("li");
+      li.className = `lv-${h.tagName}`; 
+
+      const a = document.createElement("a");
+      a.href = `#${id}`;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    toc.innerHTML = '';
+    toc.appendChild(ul);
+  }
+
+  window.updateTocForLang = function(lang) {
+    buildToc(lang);
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const lang = "en";
+    buildToc(lang);
+  });
+})();
+</script>
+
+{{ site.more_footers }}

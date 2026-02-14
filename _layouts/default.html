@@ -6,7 +6,12 @@
       <div class="top-lang-bar" data-langs="{% for l in page.langs %}{{ l.marker | downcase }}{% unless forloop.last %},{% endunless %}{% endfor %}">
         <div> 
           {%- for item in site.navbar.links -%}
-            <a href="{{ item.url }}" target="{{ item.target }}">{{ item.label }}</a>
+            {%- if item.external_link -%}
+              <a href="{{ item.url }}" target="{{ item.target }}">{{ item.label }}<svg width="0.8em" height="0.8em" class="text-[0.875rem] transition -translate-y-[10em] ml-1 text-black/[0.2] dark:text-white/[0.2]" data-icon="fa6-solid:arrow-up-right-from-square"> <symbol id="ai:fa6-solid:arrow-up-right-from-square" viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32zM80 32C35.8 32 0 67.8 0 112v320c0 44.2 35.8 80 80 80h320c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v112c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16h112c17.7 0 32-14.3 32-32s-14.3-32-32-32z"></path></symbol><use href="#ai:fa6-solid:arrow-up-right-from-square"></use></svg>
+              </a>
+            {%- else -%}
+              <a href="{{ item.url }}">{{ item.label }}</a>
+            {%- endif -%}
           {%- endfor -%}
         </div>
         <div>

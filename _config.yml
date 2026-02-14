@@ -8,17 +8,17 @@ timezone: Asia/Tokyo ## Should be TZ identifier. See https://en.wikipedia.org/wi
 
 ## The settings of the navy bar. Layout settings: see `toc` below
 navbar:
-  enable: true ## Warning: if this is false, the multi-language function will be disabled.
+  enable: True ## Warning: if this is false, the multi-language function will be disabled.
   links: 
     - url: '/Multilingual_Academic_Page_Template' ## Defined in the `permalink`
       label: 'Template Home'
-      target: ''
+      external_link: False
     - url: 'https://www.google.com/'
       label: 'Outside Page'
-      target: '_blank'
+      external_link: True
     - url: 'https://www.hakaze-c.com/'
       label: "Author's Page"
-      target: '_blank'
+      external_link: True
 
 footnotes: | 
   Your footnotes here.

@@ -40,8 +40,7 @@
             {%- endif -%}
         {%- endfor -%}
         <br>
-            <em>Pre-print</em>.&nbsp;<strong>{{ year }}</strong>.&nbsp;{%- if item.other -%}{{ item.other }}.{%- endif -%}{%- if pages -%}<br>[{{ pages }} Pages.]{%- endif -%}
-        <br>
+            <em>Pre-print</em>.&nbsp;<strong>{{ year }}</strong>.&nbsp;{%- if item.other -%}{{ item.other }}.{%- endif -%}<br>{%- if pages -%}[{{ pages }} Pages]{%- endif -%}
         {%- if urls -%}
             {%- for url in urls -%}
                 <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>&nbsp;{%- if forloop.last == false -%}|&nbsp;{%- endif -%}

@@ -55,9 +55,9 @@
         <em>{{ venue_name }}</em> {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;
         {%- if item.other -%}
         {{ item.other }}.
-        {%- endif -%}
+        {%- endif -%}<br>
         {%- if pages or h5 or infl -%}
-        <br>[   
+        [   
             {%- if pages -%}
                 {{ pages }} Pages
             {%- endif -%}
@@ -75,7 +75,6 @@
             {%- endif -%}
             ]
         {%- endif -%}
-        <br>
         {%- if urls -%}
             {%- for url in urls -%}
                 <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>&nbsp;{%- if forloop.last == false -%}|&nbsp;{%- endif -%}

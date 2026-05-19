@@ -52,11 +52,14 @@
             {%- endif -%}
         {%- endfor -%}
     <br>
-    <em>{{ venue_name }}</em> {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;<br>
+    <em>{{ venue_name }}</em> {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;
+    {%- if item.other -%}
+        {{ item.other }}.
+    {%- endif -%}
         {%- if pages or h5 or infl -%}
-        [   
+        <br>[   
             {%- if pages -%}
-                {{ pages }} pages&nbsp;
+                {{ pages }} Pages
             {%- endif -%}
             {%- if pages and (h5 or infl) -%}
                 ,&nbsp;
@@ -71,9 +74,6 @@
                 IF={{ infl }}
             {%- endif -%}
             ]
-        {%- endif -%}
-        {%- if item.other -%}
-        {{ item.other }}.
         {%- endif -%}
         <br>
         {%- if urls -%}

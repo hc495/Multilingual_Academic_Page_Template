@@ -52,11 +52,15 @@
             {%- endif -%}
         {%- endfor -%}
     <br>
-    <em>{{ venue_name }}</em> {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;
-        {%- if pages -%}
-            {{ pages }} pages.&nbsp;
-        {%- endif -%}
-        {%- if h5 or infl -%} [
+    <em>{{ venue_name }}</em> {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;<br>
+        {%- if pages or h5 or infl -%}
+        [   
+            {%- if pages -%}
+                {{ pages }} pages&nbsp;
+            {%- endif -%}
+            {%- if pages and (h5 or infl) -%}
+                ,&nbsp;
+            {%- endif -%}
             {%- if h5 -%}
                 h5={{ h5 }}
             {%- endif -%}

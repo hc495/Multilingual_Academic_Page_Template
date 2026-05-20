@@ -89,8 +89,8 @@ font_colors:
   normal: "#000000" ## The color of normal texts
   link_normal: "#2a66cc"
   link_clicked: "#070a7d"
-  link_hover: "rgb(45 118 255 / 12%)"
-  link_hover_shadow: "rgb(13 72 201)"
+  link_hover: "rgba(45, 118, 255, 0.12)"
+  link_hover_shadow: "rgba(13, 72, 201, 0.85)"
   title_underline_color: "#000000"
   end_mark_color: "#000000"
 

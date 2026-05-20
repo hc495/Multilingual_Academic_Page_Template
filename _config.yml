@@ -90,7 +90,7 @@ font_colors:
   link_normal: "#2a66cc"
   link_clicked: "#070a7d"
   link_hover: "rgb(45 118 255 / 12%)"
-  link_hover_shadow: "0 2px 8px rgb(13 72 201)"
+  link_hover_shadow: "rgb(13 72 201)"
   title_underline_color: "#000000"
   end_mark_color: "#000000"
 

@@ -4,24 +4,20 @@
 // TOC settings
 {%- assign toc_dis = 100.4 | minus: site.writing_area.margin -%}
 
-{%- if site.toc.locationX == "left" -%}
-  {%- assign toc_dis = 0.4 -%}
-{% endif %}
-
-{%- assign toc_max_width = 17.4 -%}
+{%- assign margin_direction = "left" -%}
 
 {%- if site.toc.locationX == "left" -%}
-  {%- assign toc_dis = site.writing_area.margin -%}
+  {%- assign margin_direction = "right" -%}
 {% endif %}
 
 #toc {
   position: fixed;
-  {{ site.toc.locationX }}: {{ toc_dis }}%;
+  {{ margin_direction }}: {{ toc_dis }}%;
   bottom: {{ site.toc.locationY }};
   transform: translateY(50%);
   width: auto;
   max-height: 70vh;
-  max-width: {{ toc_max_width }}%;
+  max-width: 17.4%;
   overflow: auto;
   background-color: {{ site.toc.background_color }};
   border: {{ site.toc.boarder }};

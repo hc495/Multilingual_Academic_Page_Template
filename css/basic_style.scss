@@ -128,6 +128,10 @@ a, .collapse-clicker {
     background: none;
 }
 
+.collapse-clicker:not(.collapsed)::before {
+    transform: rotate(90deg) translateY(0.02em);
+}
+
 .collapse-clicker::after {
     content: "";
     position: absolute;

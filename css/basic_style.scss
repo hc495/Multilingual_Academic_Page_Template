@@ -118,17 +118,14 @@ a, .collapse-clicker {
     border-left: 0.55em solid currentColor;
 
     opacity: 0.75;
-    margin-right: 0.15em;
+    margin-left: 0.15em;
+    margin-right: -0.2em;
 
     transform: translateY(0.02em);
     transition: transform 0.15s ease;
 
     position: static;
     background: none;
-}
-
-.collapse-clicker:not(.collapsed)::before {
-    transform: rotate(90deg) translateY(0.02em);
 }
 
 .collapse-clicker::after {

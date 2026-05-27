@@ -131,25 +131,6 @@ a, .collapse-clicker {
 .collapse-clicker:not(.collapsed)::before {
     transform: rotate(90deg) translateY(0.02em);
 }
-
-.collapse-clicker::after {
-    content: "";
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    top: 8%;
-    height: 38%;
-
-    border-radius: inherit;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.15)
-    );
-
-    pointer-events: none;
-}
 {%- endif -%}
 
 .markdown-body a:not([href]) {

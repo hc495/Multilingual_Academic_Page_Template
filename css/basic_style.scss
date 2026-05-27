@@ -101,28 +101,28 @@ a, .collapse-clicker {
         0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.collapse-clicker::before {
-    content: "?";
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    top: 8%;
-    height: 38%;
+// .collapse-clicker::before {
+//     content: "?";
+//     position: absolute;
+//     left: 8%;
+//     right: 8%;
+//     top: 8%;
+//     height: 38%;
 
-    border-radius: inherit;
+//     border-radius: inherit;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.75),
-        rgba(255, 255, 255, 0.15)
-    );
+//     background: linear-gradient(
+//         to bottom,
+//         rgba(255, 255, 255, 0.75),
+//         rgba(255, 255, 255, 0.15)
+//     );
 
-    pointer-events: none;
-}
+//     pointer-events: none;
+// }
 
-.collapse-clicker.open::before {
-    transform: rotate(90deg) translateY(-0.02em);
-}
+// .collapse-clicker.open::before {
+//     transform: rotate(90deg) translateY(-0.02em);
+// }
 {%- endif -%}
 
 .markdown-body a:not([href]) {

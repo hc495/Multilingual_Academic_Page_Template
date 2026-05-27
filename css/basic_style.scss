@@ -102,7 +102,7 @@ a, .collapse-clicker {
 }
 
 .collapse-clicker::before {
-    content: "";
+    content: "?";
     position: absolute;
     left: 8%;
     right: 8%;
@@ -118,6 +118,10 @@ a, .collapse-clicker {
     );
 
     pointer-events: none;
+}
+
+.collapse-clicker.open::before {
+    transform: rotate(90deg) translateY(-0.02em);
 }
 {%- endif -%}
 

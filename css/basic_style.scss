@@ -23,7 +23,7 @@
 }
 
 // Link styles
-a, .collapse-clicker {
+a {
     color: {{ site.font_colors.link_normal }};
     text-decoration: none;
 
@@ -40,6 +40,37 @@ a, .collapse-clicker {
         color: {{ site.font_colors.link_clicked }};
         text-decoration: underline;
     }
+}
+
+.collapse-clicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+
+    padding: 0.35em 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+
+    background: #f7f7f7;
+    color: {{ site.font_colors.link_normal }};
+    text-decoration: none;
+
+    font-size: 0.95em;
+    line-height: 1.2;
+    cursor: pointer;
+
+    transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.collapse-clicker:hover {
+    background: #eee;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.collapse-clicker:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .markdown-body a:not([href]) {

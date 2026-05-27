@@ -100,6 +100,46 @@ a, .collapse-clicker {
         inset 0 1px 3px rgba(0, 0, 0, 0.12),
         0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+.collapse-clicker {
+    position: relative;
+    overflow: hidden;
+}
+
+.collapse-clicker::before {
+    content: "▸";
+    display: inline-block;
+    font-size: 0.8em;
+    opacity: 0.75;
+    transform: translateY(-0.02em);
+    transition: transform 0.15s ease;
+
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    margin-right: 0.1em;
+}
+
+.collapse-clicker::after {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 8%;
+    height: 38%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.15)
+    );
+
+    pointer-events: none;
+}
 {%- endif -%}
 
 .markdown-body a:not([href]) {

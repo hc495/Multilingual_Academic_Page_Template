@@ -107,19 +107,28 @@ a, .collapse-clicker {
 }
 
 .collapse-clicker::before {
-    content: "▸";
+    content: "";
     display: inline-block;
-    font-size: 0.8em;
+
+    width: 0;
+    height: 0;
+
+    border-top: 0.32em solid transparent;
+    border-bottom: 0.32em solid transparent;
+    border-left: 0.55em solid currentColor;
+
     opacity: 0.75;
-    transform: translateY(-0.02em);
+    margin-right: 0.15em;
+
+    transform: translateY(0.02em);
     transition: transform 0.15s ease;
 
     position: static;
-    width: auto;
-    height: auto;
     background: none;
-    border-radius: 0;
-    margin-right: 0.1em;
+}
+
+.collapse-clicker:not(.collapsed)::before {
+    transform: rotate(90deg) translateY(0.02em);
 }
 
 .collapse-clicker::after {

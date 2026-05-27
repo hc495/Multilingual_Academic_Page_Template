@@ -23,7 +23,7 @@
 }
 
 // Link styles
-a {
+a, .collapse-clicker {
     color: {{ site.font_colors.link_normal }};
     text-decoration: none;
 
@@ -42,6 +42,7 @@ a {
     }
 }
 
+{%- if site.button_style_collapse_clicker -%}
 .collapse-clicker {
     display: inline-flex;
     align-items: center;
@@ -118,6 +119,7 @@ a {
 
     pointer-events: none;
 }
+{%- endif -%}
 
 .markdown-body a:not([href]) {
     color: {{ site.font_colors.link_normal }};

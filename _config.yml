@@ -94,6 +94,7 @@ font_colors:
   title_underline_color: "#000000"
   end_mark_color: "#000000"
 
+button_style_collapse_clicker: True
 
 ## Background (i.e., the area lower than the "paper-looked" part) Settings
 background:

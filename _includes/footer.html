@@ -48,6 +48,9 @@
     // 优先级：URL > saved > auto
     applyLang(saved || auto, available);
 
+    // 隐藏所有带有 collapse 类的元素
+    document.querySelectorAll('.collapse').forEach(el => el.style.display = 'none');
+
     document.querySelectorAll(".lang-link").forEach(a => {
       a.addEventListener("click", e => {
         e.preventDefault();

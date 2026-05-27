@@ -289,10 +289,6 @@ ul {
     }
 }
 
-.collapse {
-    display: none !important;
-}
-
 .details-panel {
     margin: 10px;
     padding: 3px 8px 3px 8px;
@@ -311,4 +307,8 @@ ul {
     radial-gradient(circle, {{ site.font_colors.end_mark_color }} 2.5px, transparent 2.5px) center/16px 16px no-repeat,
     linear-gradient(to right, rgba(0,0,0,0), {{ site.font_colors.end_mark_color }}) left 50%/calc(50% - 12px) 1.5px no-repeat,
     linear-gradient(to right, {{ site.font_colors.end_mark_color }}, rgba(0,0,0,0)) right 50%/calc(50% - 12px) 1.5px no-repeat;
+}
+
+.collapse {
+    display: none;
 }

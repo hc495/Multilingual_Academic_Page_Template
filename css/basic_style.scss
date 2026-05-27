@@ -44,7 +44,7 @@ a, .collapse-clicker {
 
 {%- if site.button_style_collapse_clicker -%}
 .collapse-clicker {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 0.35em;
 

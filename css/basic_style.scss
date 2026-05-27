@@ -51,7 +51,7 @@ a, .collapse-clicker {
     padding: 0.1em 0.1em;
     border: 1px solid #ccc;
     border-radius: 5px;
-    vertical-align: middle;
+    vertical-align: 0.1em;
 
     background: linear-gradient(
         to bottom,
@@ -63,7 +63,6 @@ a, .collapse-clicker {
     color: {{ site.font_colors.link_normal }};
     text-decoration: none;
 
-    line-height: 1.2;
     cursor: pointer;
 
     box-shadow:
@@ -72,6 +71,7 @@ a, .collapse-clicker {
         0 1px 3px rgba(0, 0, 0, 0.12);
 
     transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+    line-height: 1;
 }
 
 .collapse-clicker:hover {

@@ -47,9 +47,9 @@ a {
     align-items: center;
     gap: 0.35em;
 
-    padding: 0.35em 0.75em;
+    padding: 0.1em 0.1em;
     border: 1px solid #ccc;
-    border-radius: 999px;
+    border-radius: 5px;
 
     background: #f7f7f7;
     color: {{ site.font_colors.link_normal }};

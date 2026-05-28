@@ -53,13 +53,6 @@ a, .collapse-clicker {
     border-radius: 5px;
     vertical-align: 0.1em;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(245, 245, 245, 0.85) 45%,
-        rgba(225, 225, 225, 0.85) 55%,
-        rgba(245, 245, 245, 0.9) 100%
-    );
     color: {{ site.font_colors.link_normal }};
     text-decoration: none;
 

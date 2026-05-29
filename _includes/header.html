@@ -31,10 +31,36 @@
 <link rel="stylesheet" href="{{ "/css/basic_style.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/css/toc_and_top_bar.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/css/mobile.css" | relative_url }}">
+<link rel="stylesheet" href="{{ "/css/loader.css" | relative_url }}">
 <title>{{ page.title | escape }}</title>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{%- if page.enable_loader or site.enable_loader -%}
+<div id="loader">
+  <div class="loader-box">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Loading...</div>
+  </div>
+</div>
+
+<script>
+  function hideLoader() {
+    const loader = document.getElementById("loader");
+    if (!loader) return;
+
+    loader.classList.add("hidden");
+
+    setTimeout(function () {
+      loader.remove();
+    }, 600);
+  }
+
+  window.addEventListener("load", hideLoader);
+  setTimeout(hideLoader, 2500);
+</script>
+{%- endif -%}
 
 {{ site.fonts.includes }}
 

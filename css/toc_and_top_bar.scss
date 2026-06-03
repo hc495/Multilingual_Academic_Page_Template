@@ -34,7 +34,7 @@
 
 // Top language bar settings
 .top-lang-bar {
-    (%- if site.navbar.wide_type -%)
+    {%- if site.navbar.wide_type -%}
       position: fixed;
     {%- endif -%}
     display: flex;

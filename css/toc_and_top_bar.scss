@@ -36,6 +36,9 @@
 .top-lang-bar {
     {%- if site.navbar.wide_type -%}
       position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     {%- endif -%}
     display: flex;
     justify-content: space-between;
@@ -48,21 +51,18 @@
     {%- else -%}
       width: calc(100% - 2 * {{ site.writing_area.margin }}%);
     {%- endif -%}
-    min-width: 0;
     box-sizing: border-box;
     padding: 6px 2.2% 6px 2.2%;
     text-align: left;
     font-size: 14px;
-    font-family: system-ui, sans-serif;
     overflow-x: auto;
-    {%- if not site.navbar.wide_type -%}
+    {%- if site.navbar.wide_type == False -%}
       margin: 0.75% auto 0.75% auto;
     {%- endif -%}
     background-color: {{ site.navbar.background_color }};
     border-radius: 6pt;
     border: {{ site.navbar.boarder }};
     font-family: {{ site.navbar.fonts }};
-    top: 0;
 }
 
 .top-lang-bar a {

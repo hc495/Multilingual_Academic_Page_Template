@@ -34,31 +34,31 @@
 
 // Top language bar settings
 .top-lang-bar {
-    {%- if site.navbar.wide_type -%}
+    {% if site.navbar.wide_type %}
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    {%- endif -%}
+    {% endif %}
     display: flex;
     justify-content: space-between;
     height: {{ site.navbar.height }};
     align-items: center;
     gap: 24px;
     min-width: 600px;
-    {%- if site.navbar.wide_type -%}
+    {% if site.navbar.wide_type %}
     width: 100%;
-    {%- else -%}
+    {% else %}
     width: calc(100% - 2 * {{ site.writing_area.margin }}%);
-    {%- endif -%}
+    {% endif %}
     box-sizing: border-box;
     padding: 6px 2.2% 6px 2.2%;
     text-align: left;
     font-size: 14px;
     overflow-x: auto;
-    {%- if site.navbar.wide_type == False -%}
+    {% if site.navbar.wide_type == False %}
     margin: 0.75% auto 0.75% auto;
-    {%- endif -%}
+    {% endif %}
     background-color: {{ site.navbar.background_color }};
     border-radius: 6pt;
     border: {{ site.navbar.boarder }};

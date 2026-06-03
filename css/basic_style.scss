@@ -16,11 +16,11 @@
 // writing area styles
 .container-lg.px-3.my-5.markdown-body {
     background-color: {{ site.writing_area.background_color }};
-    {%- if site.writing_area.wide_type == False -%}
+    {% if site.writing_area.wide_type == False %}
         margin-top: 0% !important;
-    {%- else -%}
+    {% else %}
         margin-top: calc({{ site.navbar.height}} + 20px) !important;
-    {%- endif -%}
+    {% endif %}
     margin-bottom: 0 !important;
     padding: {{ site.writing_area.padding }} !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);

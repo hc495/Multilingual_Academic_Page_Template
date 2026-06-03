@@ -76,7 +76,8 @@
     align-items: center;
     gap: 24px;
     min-width: 600px;
-    width: 100%;
+    width: calc(100% - 2 * {{ site.writing_area.margin }}%);
+    margin-top: 10pt;
     min-width: 0;
     box-sizing: border-box;
     padding: 6px 2.2% 6px 2.2%;

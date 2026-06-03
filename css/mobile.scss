@@ -7,7 +7,11 @@
         text-align: justify;
     }
     .container-lg {
+        {% if site.navbar.wide_type == False %}
         margin: 0px 5px 0px 5px !important;
+        {% else %}
+        margin: 10px 5px 0px 5px !important;
+        {% endif %}
         text-align: justify;
         min-width: 0;
     }

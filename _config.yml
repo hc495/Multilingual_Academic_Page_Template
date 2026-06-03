@@ -13,7 +13,7 @@ navbar:
   enable: True ## Warning: if this is false, the multi-language function will be disabled.
   wide_type: True
   background_color: rgb(255, 255, 255)
-  boarder: "2pt solid #ffffff"
+  boarder: "1pt solid #999999"
   fonts: | ## Should be included in the aforementioned fonts.includes
     'Noto Sans JP', "Noto Sans SC"
   height: 50px

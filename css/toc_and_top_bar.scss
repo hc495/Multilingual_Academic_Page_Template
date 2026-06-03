@@ -31,51 +31,39 @@
 #toc li.lv-H2 { margin-left: 10px; }
 #toc li.lv-H3 { margin-left: 20px; }
 
-{% if site.navbar.wide_type %}
+
 // Top language bar settings
 .top-lang-bar {
+    {% if site.navbar.wide_type %}
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
+    {% endif %}
     display: flex;
     justify-content: space-between;
     height: {{ site.navbar.height }};
     align-items: center;
     gap: 24px;
     min-width: 600px;
+    {% if site.navbar.wide_type %}
     width: 100%;
-    box-sizing: border-box;
-    padding: 6px 2.2% 6px 2.2%;
-    text-align: left;
-    font-size: 14px;
-    overflow-x: auto;
-    background-color: {{ site.navbar.background_color }};
-    border-radius: 6pt;
-    border: {{ site.navbar.boarder }};
-    font-family: {{ site.navbar.fonts }};
-}
-{% else %}
-.top-lang-bar {
-    display: flex;
-    justify-content: space-between;
-    height: {{ site.navbar.height }};
-    align-items: center;
-    gap: 24px;
-    min-width: 600px;
+    {% else %}
     width: calc(100% - 2 * {{ site.writing_area.margin }}%);
+    {% endif %}
     box-sizing: border-box;
     padding: 6px 2.2% 6px 2.2%;
     text-align: left;
     font-size: 14px;
     overflow-x: auto;
+    {% if site.navbar.wide_type == False %}
     margin: 0.75% auto 0.75% auto;
+    {% endif %}
     background-color: {{ site.navbar.background_color }};
     border-radius: 6pt;
     border: {{ site.navbar.boarder }};
     font-family: {{ site.navbar.fonts }};
 }
-{% endif %}
 
 .top-lang-bar a {
     margin: 0 12px;

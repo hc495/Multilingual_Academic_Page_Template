@@ -60,8 +60,14 @@
     margin: 0.75% auto 0.75% auto;
     {% endif %}
     background-color: {{ site.navbar.background_color }};
+    {% if site.navbar.wide_type == False %}
     border-radius: 6pt;
+    {% endif %}
+    {% if site.navbar.wide_type %}
+    border-bottom: {{ site.navbar.boarder }};
+    {% else %}
     border: {{ site.navbar.boarder }};
+    {% endif %}
     font-family: {{ site.navbar.fonts }};
 }
 

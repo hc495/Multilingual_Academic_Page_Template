@@ -34,7 +34,7 @@
 
 // Top language bar settings
 .top-lang-bar {
-    (%- if site.navbar.wide_type == True -%)
+    (%- if site.navbar.wide_type -%)
       position: fixed;
     {%- endif -%}
     display: flex;
@@ -43,10 +43,10 @@
     align-items: center;
     gap: 24px;
     min-width: 600px;
-    {%- if site.navbar.wide_type == False -%}
-      width: calc(100% - 2 * {{ site.writing_area.margin }}%);
-    {%- else -%}
+    {%- if site.navbar.wide_type -%}
       width: 100%;
+    {%- else -%}
+      width: calc(100% - 2 * {{ site.writing_area.margin }}%);
     {%- endif -%}
     min-width: 0;
     box-sizing: border-box;
@@ -55,7 +55,7 @@
     font-size: 14px;
     font-family: system-ui, sans-serif;
     overflow-x: auto;
-    {%- if site.navbar.wide_type == False -%}
+    {%- if not site.navbar.wide_type -%}
       margin: 0.75% auto 0.75% auto;
     {%- endif -%}
     background-color: {{ site.navbar.background_color }};

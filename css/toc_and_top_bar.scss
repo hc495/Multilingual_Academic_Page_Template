@@ -8,7 +8,7 @@
 
 {%- if site.toc.locationX == "left" -%}
   {%- assign margin_direction = "right" -%}
-{%- endif -%}
+{% endif %}
 
 #toc {
   position: fixed;

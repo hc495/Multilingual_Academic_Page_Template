@@ -97,6 +97,7 @@
     border-radius: 6pt;
     border: {{ site.toc.boarder }};
     font-family: {{ site.toc.fonts }};
+    margin-bottom: 10pt;
 }
 
 .tail-bar a {

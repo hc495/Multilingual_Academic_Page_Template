@@ -23,6 +23,42 @@
     {%- else -%}
       <div></div><br>
     {%- endif -%}
+
+    {%- if site.banner.enable -%}
+      <div class="banner">
+        <div class="img_margin">
+         {%- for item in site.banner.images.common -%}
+            {%- unless forloop.first -%}<span style="display:inline-block; width: 16px;"></span>{%- endunless -%}
+            <img src="{{ item.path }}" alt="" height="{{ item.height }}" />
+          {%- endfor -%}
+         {%- for item in site.banner.images.lang_specific -%}
+            <img src="{{ item.path }}" alt="" height="{{ item.height }}" class="lang lang-{{ item.lang }}" />
+          {%- endfor -%}
+        </div>
+        <div>
+          <div class="banner-title">
+            {%- for item in site.banner.title -%}
+              <div class="lang lang-{{ item.lang }}">{{ item.content }}</div>
+            {%- endfor -%}
+          </div>
+          <div class="banner-introduction">
+            {{ site.banner.introduction.common_head }}
+            {%- for item in site.banner.introduction.lang_specific -%}
+              <div class="lang lang-{{ item.lang }}" style="font-size: {{ site.banner.text_size | default: '1em' }};">{{ item.content }}</div>
+            {%- endfor -%}
+            {{ site.banner.introduction.common_tail }}
+          </div>
+          <div class="banner-append">
+            {{ site.banner.append.common_head }}
+            {%- for item in site.banner.append.lang_specific -%}
+              <div class="lang lang-{{ item.lang }}" style="font-size: {{ site.banner.text_size | default: '1em' }};">{{ item.content }}</div>
+            {%- endfor -%}
+            {{ site.banner.append.common_tail }}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
     <div class="container-lg px-3 my-5 markdown-body">
       <div class="page-container">
         <div class="markdown-body">

@@ -16,7 +16,7 @@
 // writing area styles
 .container-lg.px-3.my-5.markdown-body {
     background-color: {{ site.writing_area.background_color }};
-    {% if site.navbar.wide_type %}
+    {% if site.navbar.wide_type and site.banner.enable == False %}
         margin-top: calc({{ site.navbar.height}} + 10px) !important;
     {% else %}
         margin-top: 0% !important;
@@ -183,6 +183,63 @@ figcaption {
     }
 {%- endif -%}
 
+.banner {
+    {% if site.navbar.wide_type %}
+        margin-top: calc({{ site.navbar.height}} + 12px) !important;
+    {% else %}
+        margin-top: 0% !important;
+    {% endif %}
+    display: block;
+    max-width: none;
+    margin: 2% {{ site.writing_area.margin }}% 10pt {{ site.writing_area.margin }}%;
+    background-color: {{ site.banner.background_color }};
+    position: relative;
+    /* background-image moved to ::before so we can control its opacity */
+    overflow: hidden;
+    padding: {{ site.banner.padding }} !important;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('{{ site.banner.background_image }}');
+    background-size: cover;
+    background-position: center;
+    /* opacity can be set via site.banner.background_opacity or defaults to 0.5 */
+    opacity: {{ site.banner.background_opacity | default: 0.5 }};
+    pointer-events: none;
+    z-index: 0;
+}
+
+.banner > * {
+    position: relative;
+    z-index: 1;
+}
+
+.banner .banner-title {
+    font-family: {{ site.fonts.title }};
+    font-size: 1.55em;
+    padding: 0px 0px 15px 0px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.banner .banner-introduction {
+    font-size: 1.1em;
+    padding: 0 0px 10px;
+    text-align: center;
+}
+
+.banner .banner-introduction p {
+    margin-top: 15px;
+}
+
+.banner .banner-append {
+    font-size: 1em;
+    padding: 0px;
+}
+
 // Remove horizontal rule after headings
 body, .markdown-body {
     color: {{ site.font_colors.normal }};
@@ -231,7 +288,7 @@ body, .markdown-body {
 
 div.img_margin {
     float: right;
-    margin-top: 4px;
+    margin-top: 0px;
     margin-left: 32px;
     margin-right: 32px;
     text-align: right;

@@ -8,6 +8,49 @@ timezone: Asia/Tokyo ## Should be TZ identifier. See https://en.wikipedia.org/wi
 
 enable_loader: True ## Whether to show the loading animation when the page is loading. If your site is very fast, you can set it to False.
 
+banner: 
+  enable: True
+  background_color: "rgba(255, 255, 255, 0.65)"
+  background_image: "" ## The background image of the title plate. You can use absolute or relative path. If you want to use different images for different languages, you can set them in the lang_specific part.
+  background_opacity: 0.5 ## The opacity of the background image.
+  padding: "1% 3% 0.5% 3%"
+  title:
+    - lang: 'en'
+      content: 'Title'
+    - lang: 'jp'
+      content: 'Title JP'
+    - lang: 'zh'
+      content: 'Title ZH'
+  images: ## The images in the title plate. You can use absolute or relative path. If you want to use different images for different languages, you can set them in the lang_specific part.
+    common: 
+      - path: "some_image.png"
+        height: 130
+      - path: "some_image.png"
+        height: 130
+    lang_specific:
+  introduction: # The introduction will be in the center of the title plate. Use HTML format here.
+    common_head: Here is the common head sentences. You can also set them in the lang_specific part if you want to show different sentences in different languages.
+    lang_specific:
+      - lang: 'en'
+        content: Here is the introduction in English. You can use HTML format here.
+      - lang: 'jp'
+        content: Here is the introduction in Japanese. You can use HTML format here.
+      - lang: 'zh'
+        content: Here is the introduction in Chinese. You can use HTML format here.
+    common_tail: |
+      Some tail sentences here. You can also set them in the lang_specific part if you want to show different sentences in different languages.
+  append:
+    common_head: Here is the common head appendix sentences. You can also set them in the lang_specific part if you want to show different sentences in different languages.
+    lang_specific: 
+      - lang: 'en'
+        content: Here is the append in English. You can use HTML format here.
+      - lang: 'jp'
+        content: Here is the append in Japanese. You can use HTML format here.
+      - lang: 'zh'
+        content: Here is the append in Chinese. You can use HTML format here.
+    common_tail: |
+      Some tail sentences here. You can also set them in the lang_specific part if you want to show different sentences in different languages.
+
 ## The settings of the navy bar. Layout settings: see `toc` below
 navbar:
   enable: True ## Warning: if this is false, the multi-language function will be disabled.

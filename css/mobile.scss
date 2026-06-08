@@ -16,9 +16,6 @@
         text-align: justify;
         min-width: 0;
     }
-    img {
-        display: none;
-    }
     figcaption {
         display: none;
     }
@@ -38,6 +35,19 @@
         padding: 3px 8px 3px 8px;
         font-size: 83%;
         border-radius: 4px;
+    }
+    .banner {
+        margin: 5px;
+    }
+    .banner .banner-title {
+        font-size: 1em;
+    }
+
+    .banner .banner-introduction {
+        font-size: 0.9em;
+    }
+    .banner .banner-append {
+        font-size: 0.8em;
     }
     .top-lang-bar {
         width: 100%;

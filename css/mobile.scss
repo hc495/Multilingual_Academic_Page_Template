@@ -6,17 +6,12 @@
         font-size: 1.5em;
         text-align: justify;
     }
-    .container-lg.px-3.my-5.markdown-body {
-        {% if site.navbar.wide_type %}
-        margin-top: 10pt !important;
-        {% endif %}
-    }
     .container-lg {
         {% if site.navbar.wide_type == False %}
         margin: 0px 5px 0px 5px !important;
         {% else %}
         margin: 5px 5px 0px 5px !important;
-        margin-top: 10pt !important;
+        margin-top: 25pt !important;
         {% endif %}
         text-align: justify;
         min-width: 0;
@@ -46,7 +41,7 @@
     }
     .top-lang-bar {
         width: 100%;
-        height: auto !important;
+        height: {{ site.navbar.height }};
         max-width: none !important;
         min-width: 0;
         border-radius: 0;

@@ -9,4 +9,5 @@ langs:
     label: '日本語'
   - marker: 'zh'
     label: '简体中文'
+disable_banner: True
 ---

@@ -6,6 +6,11 @@
         font-size: 1.5em;
         text-align: justify;
     }
+    .container-lg.px-3.my-5.markdown-body {
+        {% if site.navbar.wide_type %}
+        margin-top: 10pt !important;
+        {% endif %}
+    }
     .container-lg {
         {% if site.navbar.wide_type == False %}
         margin: 0px 5px 0px 5px !important;

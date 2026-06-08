@@ -17,9 +17,9 @@
 .container-lg.px-3.my-5.markdown-body {
     background-color: {{ site.writing_area.background_color }};
     {% if site.navbar.wide_type %}
-        margin-top: calc({{ site.navbar.height}} + 10px);
+        margin-top: calc({{ site.navbar.height}} + 10px) !important;
     {% else %}
-        margin-top: 0%;
+        margin-top: 0% !important;
     {% endif %}
     margin-bottom: 0 !important;
     padding: {{ site.writing_area.padding }} !important;

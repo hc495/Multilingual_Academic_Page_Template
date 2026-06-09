@@ -20,7 +20,7 @@
   max-width: 17.4%;
   overflow: auto;
   background-color: {{ site.toc.background_color }};
-  border: {{ site.toc.boarder }};
+  border: {{ site.toc.border }};
   border-radius: 8px;
   padding: 10px 12px;
   font-size: {{ site.toc.fontsize }};
@@ -64,9 +64,9 @@
     border-radius: 6pt;
     {% endif %}
     {% if site.navbar.wide_type %}
-    border-bottom: {{ site.navbar.boarder }};
+    border-bottom: {{ site.navbar.border }};
     {% else %}
-    border: {{ site.navbar.boarder }};
+    border: {{ site.navbar.border }};
     {% endif %}
     font-family: {{ site.navbar.fonts }};
 }
@@ -95,7 +95,7 @@
     overflow-x: auto;
     background-color: {{ site.toc.background_color }};
     border-radius: 6pt;
-    border: {{ site.toc.boarder }};
+    border: {{ site.toc.border }};
     font-family: {{ site.toc.fonts }};
     margin-bottom: 10pt;
 }

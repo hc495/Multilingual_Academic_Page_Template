@@ -197,8 +197,8 @@ figcaption {
     /* background-image moved to ::before so we can control its opacity */
     overflow: hidden;
     padding: {{ site.banner.padding }} !important;
-    boarder: {{ site.banner.boarder }};
-    border-radius: {{ site.banner.boarder_radius }};
+    border: {{ site.banner.border }};
+    border-radius: {{ site.banner.border_radius }};
 }
 
 .banner::before {

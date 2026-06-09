@@ -14,6 +14,8 @@ banner:
   background_image: "" ## The background image of the title plate. You can use absolute or relative path. If you want to use different images for different languages, you can set them in the lang_specific part.
   background_opacity: 0.5 ## The opacity of the background image.\
   text_color: "#000000"
+  border: "1px solid #b0c8ff"
+  border_radius: 10px
   padding: "1% 3% 0.5% 3%"
   title:
     - lang: 'en'
@@ -57,7 +59,7 @@ navbar:
   enable: True ## Warning: if this is false, the multi-language function will be disabled.
   wide_type: True
   background_color: rgb(255, 255, 255)
-  boarder: "1pt solid #999999"
+  border: "1pt solid #999999"
   fonts: | ## Should be included in the aforementioned fonts.includes
     'Noto Sans JP', "Noto Sans SC"
   height: 50px
@@ -162,14 +164,14 @@ writing_area:
   padding: "2% 3% 1.5% 3%" ## the blank area in the boundary of the writing area. up, left, down, right
 
 ## Table of Content Settings
-## NOTICE: THE background_color, fonts, boarder settings is reused by the navybar.
+## NOTICE: THE background_color, fonts, border settings is reused by the navybar.
 toc:
   enabled: true
   levels: "h1, h2" ## Which titles is contained in the TOC? e.g., "h1, h2" or "h2, h3, h4"
   locationX: left ## `left` or `right`
   locationY: 50% ## The length from the bottom of the page to the Center of the toc
   background_color: rgba(255, 255, 255, 0.5) ## The background color of the toc
-  boarder: "2pt solid #ffffff" ## The boarder settings of the toc. Line width, line style, line color.
+  border: "2pt solid #ffffff" ## The border settings of the toc. Line width, line style, line color.
   fonts: | ## Should be included in the aforementioned fonts.includes
     'Noto Sans JP', "Noto Sans SC"
   fontsize: 14px

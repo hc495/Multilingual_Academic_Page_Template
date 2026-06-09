@@ -218,6 +218,7 @@ figcaption {
 }
 
 .banner .banner-title {
+    color: {{ site.banner.text_color }};
     font-family: {{ site.fonts.title }};
     font-size: 1.55em;
     padding: 0px 0px 15px 0px;
@@ -226,6 +227,7 @@ figcaption {
 }
 
 .banner .banner-introduction {
+    color: {{ site.banner.text_color }};
     font-size: 1.1em;
     padding: 0 0px 10px;
     text-align: center;
@@ -236,6 +238,7 @@ figcaption {
 }
 
 .banner .banner-append {
+    color: {{ site.banner.text_color }};
     font-size: 1em;
     padding: 0px;
 }

@@ -2,13 +2,16 @@
 ---
 
 ol.preprint li::marker {
-  content: "P" counter(list-item) ". ";
+  content: "[p" counter(list-item) "]. ";
+  font-weight: bold;
 }
 
 ol.domestic_conf li::marker {
-  content: "O" counter(list-item) ". ";
+  content: "[o" counter(list-item) "]. ";
+  font-weight: bold;
 }
 
 ol.international_conf li::marker {
-  content: "C" counter(list-item) ". ";
+  content: "[c" counter(list-item) "]. ";
+  font-weight: bold;
 }

@@ -1,47 +1,14 @@
 ---
 ---
 
-.international_conf {
-  counter-reset: international_conf;
-  list-style: none;
-  padding-left: 2em;
+ol.preprint li::marker {
+  content: "P" counter(list-item) ". ";
 }
 
-.international_conf li {
-  counter-increment: international_conf;
+ol.domestic_conf li::marker {
+  content: "O" counter(list-item) ". ";
 }
 
-.international_conf li::before {
-  content: "C" counter(international_conf) ". ";
-  font-weight: bold;
-}
-
-.preprint {
-  counter-reset: preprint;
-  list-style: none;
-  padding-left: 2em;
-}
-
-.preprint li {
-  counter-increment: preprint;
-}
-
-.preprint li::before {
-  content: "P" counter(preprint) ". ";
-  font-weight: bold;
-}
-
-.domestic_conf {
-  counter-reset: domestic_conf;
-  list-style: none;
-  padding-left: 2em;
-}
-
-.domestic_conf li {
-  counter-increment: domestic_conf;
-}
-
-.domestic_conf li::before {
-  content: "O" counter(domestic_conf) ". ";
-  font-weight: bold;
+ol.international_conf li::marker {
+  content: "I" counter(list-item) ". ";
 }

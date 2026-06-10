@@ -10,5 +10,5 @@ ol.domestic_conf li::marker {
 }
 
 ol.international_conf li::marker {
-  content: "I" counter(list-item) ". ";
+  content: "C" counter(list-item) ". ";
 }

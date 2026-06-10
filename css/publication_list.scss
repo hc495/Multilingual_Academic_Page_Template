@@ -4,23 +4,19 @@
 ol.preprint li::marker {
   content: "[p" counter(list-item) "]. ";
   font-weight: bold;
-  padding-left: 3.5em;
 }
 
 ol.domestic_conf li::marker {
   content: "[o" counter(list-item) "]. ";
   font-weight: bold;
-  padding-left: 3.5em;
 }
 
 ol.international_conf li::marker {
   content: "[c" counter(list-item) "]. ";
   font-weight: bold;
-  padding-left: 3.5em;
 }
 
 ol.thesis li::marker {
   content: "[t" counter(list-item) "]. ";
   font-weight: bold;
-  padding-left: 3.5em;
 }

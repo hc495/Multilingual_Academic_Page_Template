@@ -199,6 +199,7 @@ figcaption {
     padding: {{ site.banner.padding }} !important;
     border: {{ site.banner.border }};
     border-radius: {{ site.banner.border_radius }};
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .banner::before {

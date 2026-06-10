@@ -2,6 +2,13 @@
 {%- assign venues = site.data.venues -%}
 {%- assign know_authors = site.data.authors -%}
 
+<style>
+ol.domestic_conf li::marker {
+  content: "[o" counter(list-item) "]. ";
+  font-weight: bold;
+}
+</style>
+
 {%- if papers -%}
     <div class="wide_list">
     <ol class="domestic_conf">

@@ -1,3 +1,11 @@
+<style>
+ol.thesis li::marker {
+  content: "[t" counter(list-item) "]. ";
+  font-weight: bold;
+}
+</style>
+
+
 {%- if include.style == 'international_conf' -%}
     {%- include publication_list_style/international_conf.html file=item.file -%}
 {%- endif -%}

@@ -1,6 +1,13 @@
 {%- assign papers = site.data[include.file] -%}
 {%- assign know_authors = site.data.authors -%}
 
+<style>
+    ol.preprint li::marker {
+      content: "[p" counter(list-item) "]. ";
+      font-weight: bold;
+    }
+</style>
+
 {%- if papers -%}
     <div class="wide_list">
     <ol class="preprint">

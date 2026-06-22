@@ -208,11 +208,12 @@ figcaption {
     inset: 0;
     background-image: url('{{ site.banner.background_image }}');
     background-size: cover;
-    background-position: center;
+    background-position: {{ site.banner.background_position | default: 'center' }};
     /* opacity can be set via site.banner.background_opacity or defaults to 0.5 */
     opacity: {{ site.banner.background_opacity | default: 0.5 }};
     pointer-events: none;
     z-index: 0;
+    background-attachment: fixed;
 }
 
 .banner > * {

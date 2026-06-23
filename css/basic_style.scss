@@ -214,7 +214,7 @@ figcaption {
     background-attachment: fixed;
     background-size: {{ site.banner.background_size | default: 'cover' }};
     background-position-x: center;
-    background-position-y: center;
+    background-position-y: {{ site.banner.background_position_y | default: 'center' }};
 }
 
 .banner > * {

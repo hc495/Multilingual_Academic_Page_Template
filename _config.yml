@@ -147,7 +147,7 @@ font_colors:
   link_hover_shadow: "rgba(13, 72, 201, 0.85)"
   title_underline_color: "#000000"
   end_mark_color: "#000000"
-
+  award_color: "#f00a00"
 button_style_collapse_clicker: True
 
 ## Background (i.e., the area lower than the "paper-looked" part) Settings

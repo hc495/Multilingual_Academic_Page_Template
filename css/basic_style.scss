@@ -361,3 +361,8 @@ ul {
 .collapse {
     display: none;
 }
+
+span.award {
+    font-weight: bold;
+    color: {{ site.font_colors.award_color }};
+}

@@ -63,6 +63,11 @@ ol.international_conf li::marker {
         {%- if item.other -%}
         {{ item.other }}.
         {%- endif -%}<br>
+        {%- if item.award -%}
+        {%- for award in item.award -%}
+        ⭐<span class="award">{{ award }}</span><br>
+        {%- endfor -%}
+        {%- endif -%}
         {%- if pages or h5 or infl -%}
         [   
             {%- if pages -%}

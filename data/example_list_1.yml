@@ -30,7 +30,9 @@
       &nbsp;&nbsp;&nbsp;&nbsp;year={2025},<br>
       &nbsp;&nbsp;&nbsp;&nbsp;url={https://openreview.net/forum?id=PAPER_OPENREVIEW_ID}<br>
     }
-  other: "Best Paper in NIPS 3025" ## Can be empty.  
+  other: "Oral" ## Can be empty.  
+  award: 
+    - "Best Paper Award" ## Can be empty.
 
 - title: "Example Paper Title2"
   authors:

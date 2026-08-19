@@ -72,25 +72,6 @@ ol.domestic_conf li::marker {
             ⭐<span class="award">{{ award }}</span><br>
         {%- endfor -%}
         {%- endif -%}
-        {%- if pages or h5 or infl -%}
-        [   
-            {%- if pages -%}
-                {{ pages }} Pages
-            {%- endif -%}
-            {%- if pages and (h5 or infl) -%}
-                ,&nbsp;
-            {%- endif -%}
-            {%- if h5 -%}
-                h5={{ h5 }}
-            {%- endif -%}
-            {%- if h5 and infl -%}
-                ,&nbsp;
-            {%- endif -%}
-            {%- if infl -%}
-                IF={{ infl }}
-            {%- endif -%}
-            ]&nbsp;
-        {%- endif -%}
         {%- if urls -%}
             {%- for url in urls -%}
                 <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>&nbsp;{%- if forloop.last == false -%}|&nbsp;{%- endif -%}
@@ -118,7 +99,26 @@ ol.domestic_conf li::marker {
                         {{- item.bibtex -}}
                     </div>
                 </div>
-            </div>
+            </div> 
+        {%- endif -%}
+        {%- if pages or h5 or infl -%}
+        &nbsp;[   
+            {%- if pages -%}
+                {{ pages }} Pages
+            {%- endif -%}
+            {%- if pages and (h5 or infl) -%}
+                ,&nbsp;
+            {%- endif -%}
+            {%- if h5 -%}
+                h5={{ h5 }}
+            {%- endif -%}
+            {%- if h5 and infl -%}
+                ,&nbsp;
+            {%- endif -%}
+            {%- if infl -%}
+                IF={{ infl }}
+            {%- endif -%}
+            ]&nbsp;
         {%- endif -%}
         </li>
         {%- endfor -%}

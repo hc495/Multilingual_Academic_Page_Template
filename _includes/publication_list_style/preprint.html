@@ -47,7 +47,7 @@
             {%- endif -%}
         {%- endfor -%}
         <br>
-            <em>Pre-print</em>.&nbsp;<strong>{{ year }}</strong>.&nbsp;{%- if item.other -%}{{ item.other }}.{%- endif -%}<br>{%- if pages -%}[{{ pages }} Pages]&nbsp;{%- endif -%}
+            <em>Pre-print</em>.&nbsp;<strong>{{ year }}</strong>.&nbsp;{%- if item.other -%}{{ item.other }}.{%- endif -%}<br>
         {%- if urls -%}
             {%- for url in urls -%}
                 <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>&nbsp;{%- if forloop.last == false -%}|&nbsp;{%- endif -%}
@@ -77,6 +77,7 @@
                 </div>
             </div>
         {%- endif -%}
+        {%- if pages -%}&nbsp;[{{ pages }} Pages]{%- endif -%}
         </li>
     {%- endfor -%}
 </ol>

@@ -17,6 +17,7 @@ ol.domestic_conf li::marker {
         {%- assign authors = item.authors -%}
         {%- assign venue = item.venue -%}
         {%- assign pages = item.pages -%}
+        {%- assign page = item.page -%}
         {%- if venues[venue] -%}
             {%- assign venue_name = venues[venue].name -%}
             {%- assign venue_short = venues[venue].short -%}
@@ -101,6 +102,9 @@ ol.domestic_conf li::marker {
         &nbsp;[   
             {%- if pages -%}
                 {{ pages }} Pages
+                {%- if page -%}
+                    &nbsp;({{ page.from }} - {{ page.to }})
+                {%- endif -%}
             {%- endif -%}
             {%- if pages and (h5 or infl) -%}
                 ,&nbsp;

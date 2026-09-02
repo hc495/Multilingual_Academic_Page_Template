@@ -368,7 +368,6 @@ span.award {
     border-radius: 6px;
     background: {{ site.font_colors.award_color }}; 
     font-size: 0.9em;
-    font-weight: 500;
     white-space: nowrap;
 }
 
@@ -382,7 +381,7 @@ span.award {
   border-radius: 6px;
   background: {{ site.conference_badge.background_color }}; 
   font-size: 0.9em;
-  font-weight: 500;
+  font-weight: bold;
   white-space: nowrap;
 }
 

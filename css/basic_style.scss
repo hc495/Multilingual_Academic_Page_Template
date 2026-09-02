@@ -366,3 +366,13 @@ span.award {
     font-weight: bold;
     color: {{ site.font_colors.award_color }};
 }
+
+.venue {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #f2f2f2;
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+}

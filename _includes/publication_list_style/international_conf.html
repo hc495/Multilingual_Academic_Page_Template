@@ -64,21 +64,42 @@ ol.international_conf li::marker {
         {%- if item.other -%}
         {{ item.other }}.
         {%- endif -%}<br>
+        {%- assign first_term = true -%}
         {%- if item.award -%}
         {%- for award in item.award -%}
-        <span class="award">{{ award }}</span>&nbsp;|&nbsp;
+            {%- if first_term -%}
+                {%- assign first_term = false -%}
+            {%- else -%}
+                &nbsp;|&nbsp;
+            {%- endif -%}
+            <span class="award">{{ award }}</span>
         {%- endfor -%}
         {%- endif -%}
         {%- if urls -%}
             {%- for url in urls -%}
-                <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>&nbsp;{%- if forloop.last == false -%}|&nbsp;{%- endif -%}
+                {%- if first_term -%}
+                    {%- assign first_term = false -%}
+                {%- else -%}
+                    &nbsp;|&nbsp;
+                {%- endif -%}
+                <a href="{{ url.url }}" target="_blank">{{ url.label }}</a>
             {%- endfor -%}
         {%- endif -%}
         {%- if item.abstract -%}
-    |&nbsp;<a class="collapse-clicker" onclick="$('.{{ item.id }}_abstract').slideToggle(200)">Abstract</a>&nbsp;
+            {%- if first_term -%}
+                {%- assign first_term = false -%}
+            {%- else -%}
+                &nbsp;|&nbsp;
+            {%- endif -%}
+            <a class="collapse-clicker" onclick="$('.{{ item.id }}_abstract').slideToggle(200)">Abstract</a>
         {%- endif -%}
         {%- if item.bibtex -%}
-    |&nbsp;<a class="collapse-clicker" onclick="$('.{{ item.id }}_bibtex').slideToggle(200)">Bibtex</a>&nbsp;
+            {%- if first_term -%}
+                {%- assign first_term = false -%}
+            {%- else -%}
+                &nbsp;|&nbsp;
+            {%- endif -%}
+            <a class="collapse-clicker" onclick="$('.{{ item.id }}_bibtex').slideToggle(200)">Bibtex</a>
         {%- endif -%}
         {%- if item.abstract -%}
             <div class="collapse {{ item.id }}_abstract" id="{{ item.id }}_abstract">

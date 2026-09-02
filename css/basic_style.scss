@@ -380,3 +380,8 @@ span.award {
   font-weight: 500;
   white-space: nowrap;
 }
+
+::selection {
+  background: #ffd6e7;
+  color: #222;
+}

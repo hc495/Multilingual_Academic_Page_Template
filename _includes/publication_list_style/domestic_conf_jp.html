@@ -33,11 +33,10 @@ ol.domestic_conf li::marker {
         {%- assign basic_url = item.basic_url -%}
         {%- assign urls = item.urls -%}
         
-        {%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}
         {%- if item.basic_url -%}
-            <li>{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li>{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
+            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

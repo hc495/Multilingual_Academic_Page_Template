@@ -382,6 +382,6 @@ span.award {
 }
 
 ::selection {
-  background: #ffd6e7;
-  color: #222;
+  background: {{ site.font_colors.selected_text_background_color }};
+  color: {{ site.font_colors.selected_text_color }};
 }

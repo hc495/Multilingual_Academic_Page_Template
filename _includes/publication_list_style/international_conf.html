@@ -34,9 +34,9 @@ ol.international_conf li::marker {
         {%- assign urls = item.urls -%}
         
         {%- if item.basic_url -%}
-            <li id="{{ item.id }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li id="{{ item.id }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> {%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li id="{{ item.id }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}<strong>{{ title }}</strong><br>
+            <li id="{{ item.id }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> {%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

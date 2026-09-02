@@ -368,10 +368,14 @@ span.award {
 }
 
 .venue {
-  display: inline-block;
+  {%- if site.conference_badge.display -%}
+    display: inline-block;
+    {%- else -%}
+    display: none;
+  {%- endif -%}
   padding: 2px 8px;
   border-radius: 6px;
-  background: #f2f2f2;
+  background: {{ site.conference_badge.background_color }}; 
   font-size: 0.9em;
   font-weight: 500;
   white-space: nowrap;

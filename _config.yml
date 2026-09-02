@@ -181,6 +181,10 @@ details_panel:
   background_color: "#eff4ff"
   border: "2px solid #b0c8ff"
 
+conference_badge:
+  display: True 
+  background_color: "#bddcff"
+
 # ------------------------------------------
 # Advanced
 # ------------------------------------------

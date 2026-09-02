@@ -64,7 +64,7 @@ ol.domestic_conf li::marker {
             {%- endif -%}
         {%- endfor -%}
         <br>
-        {{ venue_name }} {%- if venue_short -%}&nbsp;(<strong>{{ venue_short }}</strong>){%- endif -%}.&nbsp;<strong>{{ year }}</strong>.&nbsp;
+        {%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }}</strong> </span> {%- endif -%}<em>{{ venue_name }}</em>.&nbsp;<strong>{{ year }}</strong>.&nbsp;
         {%- if item.other_jp -%}
         {{ item.other_jp }}.
         {%- endif -%}<br>

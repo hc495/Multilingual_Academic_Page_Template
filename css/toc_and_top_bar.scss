@@ -52,7 +52,7 @@
     width: calc(100% - 2 * {{ site.writing_area.margin }}%);
     {% endif %}
     box-sizing: border-box;
-    padding: 6px 2.2% 6px 2.2%;
+    padding: 6px {{ site.writing_area.margin }}% 6px {{ site.writing_area.margin }}%;
     text-align: left;
     font-size: 14px;
     overflow-x: auto;

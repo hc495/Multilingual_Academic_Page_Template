@@ -364,7 +364,12 @@ ul {
 
 span.award {
     font-weight: bold;
-    color: {{ site.font_colors.award_color }};
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: {{ site.font_colors.award_color }}; 
+    font-size: 0.9em;
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 .venue {

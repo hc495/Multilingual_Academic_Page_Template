@@ -55,6 +55,7 @@
     .top-lang-bar {
         width: 100%;
         height: {{ site.navbar.height }};
+        padding: 6px 2.2% 6px 2.2%;
         max-width: none !important;
         min-width: 0;
         border-radius: 0;

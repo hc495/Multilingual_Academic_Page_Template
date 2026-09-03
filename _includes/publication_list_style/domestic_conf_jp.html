@@ -34,9 +34,9 @@ ol.domestic_conf li::marker {
         {%- assign urls = item.urls -%}
         
         {%- if item.basic_url -%}
-            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> {%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> {%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
+            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

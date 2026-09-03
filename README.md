@@ -149,5 +149,6 @@ When designing, I referred to the following personal homepage:
 - [Yepeng Ding's Personal Page](https://yepengding.github.io/){:target="_blank"}
 - [Dong Li's Personal Page](https://dong.li/){:target="_blank"}
 - [Kentaro Inui's Personal Page](https://kentaro-inui.github.io/){:target="_blank"}
+- [Makoto Morishita's Personal Page](https://www.otofu.org/){:target="_blank"}  
 
 <div class="end-mark"></div>

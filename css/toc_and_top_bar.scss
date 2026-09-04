@@ -45,6 +45,15 @@
   font-weight: 700;
 }
 
+#toc a::after {
+  content: attr(data-text);
+  font-weight: 700;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  display: block;
+}
+
 #toc a::before {
   content: "";
   position: absolute;

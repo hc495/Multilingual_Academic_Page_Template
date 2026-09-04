@@ -1,18 +1,50 @@
 {%- assign current_lang = include.lang -%}
 
 {%- for item in site.publication_list -%}
-    {%- if item.title[current_lang] -%}
-        {%- if item.instructions[current_lang] -%}
-            <h3 class="lang lang-{{ current_lang }} active" style="margin-bottom: 0em"> {{ item.title[current_lang] }}</h3>
-        {%- else -%}
-            <h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3>
-        {%- endif -%}
+    {%- if item.use_fold -%}
+        {%- assign papers = site.data[item.file] -%}
+        {%- if item.title[current_lang] -%}
+            {%- if item.instructions[current_lang] -%}
+                <details class="lang lang-{{ current_lang }} active pub-section" ontoggle="
+                  this.querySelector('summary').style.setProperty(
+                    'margin-bottom',
+                    this.open ? '0em' : '',
+                    this.open ? 'important' : ''
+                  );
+                  this.querySelector('summary > h3').style.setProperty(
+                    'margin-bottom',
+                    this.open ? '0em' : '',
+                    this.open ? 'important' : ''
+                  );
+                " {% if item.opened %} open {% endif %}>
+                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count">({{ papers | size }})</span></summary>
+            {%- else -%}
+                <details class="lang lang-{{ current_lang }} active pub-section" {% if item.opened %} open {% endif %}>
+                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count">({{ papers | size }})</span></summary>
+            {%- endif -%}
 
-        {%- if item.instructions[current_lang] -%}
-            <div class="lang lang-{{ current_lang }} active" style="font-size:0.9em; margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
+            {%- if item.instructions[current_lang] -%}
+                <div class="lang lang-{{ current_lang }} active" style="font-size:calc({{ site.font_scale }} * 0.9); margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
+            {%- endif -%}
+                <div class="lang lang-{{ current_lang }} active">
+            {%- include publication_list_style/index.html style=item.style file=item.file -%}
+            </div>
+            </details>
         {%- endif -%}
-        <div class="lang lang-{{ current_lang }} active">
-        {%- include publication_list_style/index.html style=item.style file=item.file -%}
-        </div>
+    {%- else -%}
+        {%- if item.title[current_lang] -%}
+            {%- if item.instructions[current_lang] -%}
+                <h3 class="lang lang-{{ current_lang }} active" style="margin-bottom: 0em"> {{ item.title[current_lang] }}</h3>
+            {%- else -%}
+                <h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3>
+            {%- endif -%}
+
+            {%- if item.instructions[current_lang] -%}
+                <div class="lang lang-{{ current_lang }} active" style="font-size:0.9em; margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
+            {%- endif -%}
+            <div class="lang lang-{{ current_lang }} active">
+            {%- include publication_list_style/index.html style=item.style file=item.file -%}
+            </div>
+        {%- endif -%}
     {%- endif -%}
 {%- endfor -%}

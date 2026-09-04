@@ -87,6 +87,18 @@ publication_list:
       zh: '国际会议'
     style: 'international_conf' ## Should be defined and indexed in the _includes/publication_list_style. Basically the `international_conf` is good for all scenarios.
     calculate_statics: True
+    use_fold: True
+    opened: False
+  - file: 'example_list_1' ## Should be saved in the `data` path.
+    title: 
+      ## If the language is not presented in the title dictionary, the list will not be presented in such language.
+      en: 'International Conference'
+      jp: '国際会議'
+      zh: '国际会议'
+    style: 'international_conf' ## Should be defined and indexed in the _includes/publication_list_style. Basically the `international_conf` is good for all scenarios.
+    calculate_statics: True
+    use_fold: True
+    opened: True
   - file: 'example_list_2'
     title: 
       en: 'Pre-print'
@@ -94,6 +106,8 @@ publication_list:
       zh: '预印本'
     style: 'preprint'
     calculate_statics: True
+    use_fold: False
+    opened: False
 
 name_to_bold: # Which author names should be in bold?
   - 'Saved Author 1'

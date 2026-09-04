@@ -46,20 +46,15 @@
 }
 
 #toc a::before {
-  content: "";
+  content: "✦";
   position: absolute;
-
-  left: -10px;
+  left: -1em;
   top: 50%;
 
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-
-  background: currentColor;
+  font-weight: normal;
 
   opacity: 0;
-  transform: translateY(-50%) scale(0.6);
+  transform: translateY(-50%) scale(0.7);
 
   transition:
     opacity 0.15s ease,

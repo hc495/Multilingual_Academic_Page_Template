@@ -35,7 +35,7 @@
 }
 
 // Link styles
-a, .collapse-clicker {
+a, summary, .collapse-clicker {
     color: {{ site.font_colors.link_normal }};
     text-decoration: none;
 
@@ -168,7 +168,7 @@ small {
 {%- endfor -%}
 
 figcaption {
-    font-size: 0.8em;
+    font-size: calc({{ site.font_scale }} * 0.8);
     color: #666;
     text-align: center;
 }
@@ -233,7 +233,7 @@ figcaption {
 .banner .banner-title {
     color: {{ site.banner.text_color }};
     font-family: {{ site.fonts.title }};
-    font-size: 1.55em;
+    font-size: calc({{ site.font_scale }} * 1.55);
     padding: 0px 0px 15px 0px;
     text-align: center;
     font-weight: 600;
@@ -241,7 +241,7 @@ figcaption {
 
 .banner .banner-introduction {
     color: {{ site.banner.text_color }};
-    font-size: 1.1em;
+    font-size: {{ site.font_scale }};
     padding: 0 0px 10px;
     text-align: center;
 }
@@ -252,7 +252,7 @@ figcaption {
 
 .banner .banner-append {
     color: {{ site.banner.text_color }};
-    font-size: 1em;
+    font-size: {{ site.font_scale }};
     padding: 0px;
 }
 
@@ -274,7 +274,7 @@ body, .markdown-body {
 
 .markdown-body h1 {
     font-family: {{ site.fonts.title }} !important;
-    font-size: 1.55em !important;
+    font-size: calc({{ site.font_scale }} * 1.55) !important;
     margin-top: 0 !important;
     border-bottom: 3px double {{ site.font_colors.title_underline_color }};
     font-weight: 800;
@@ -282,7 +282,7 @@ body, .markdown-body {
 
 .markdown-body h2 {
     font-family: {{ site.fonts.title }} !important;
-    font-size: 1.4em !important;
+    font-size: calc({{ site.font_scale }} * 1.40) !important;
     padding: 20px 0 0 0;
     border-bottom: 1px solid {{ site.font_colors.title_underline_color }};
     font-weight: 800;
@@ -291,7 +291,7 @@ body, .markdown-body {
 
 .markdown-body h3 {
     font-family: {{ site.fonts.title }} !important;
-    font-size: 1.25em !important;
+    font-size: calc({{ site.font_scale }} * 1.25) !important;
 }
 
 .markdown-body h3
@@ -349,7 +349,7 @@ ul {
 .details-panel {
     margin: 10px;
     padding: 3px 8px 3px 8px;
-    font-size: 16px;
+    font-size: calc({{ site.font_scale }} * 0.9);
     border-radius: 8px;
     background-color: {{ site.details_panel.background_color }};
     text-align: justify;
@@ -375,7 +375,7 @@ span.award {
     padding: 0px 4px;
     border-radius: 6px;
     background: {{ site.conference_badge.award_color }}; 
-    font-size: 0.9em;
+    font-size: {{ site.font_scale }};
     white-space: nowrap;
 }
 
@@ -388,7 +388,7 @@ span.award {
   padding: 0px 4px;
   border-radius: 6px;
   background: {{ site.conference_badge.background_color }}; 
-  font-size: 0.9em;
+  font-size: {{ site.font_scale }};
   font-weight: bold;
   white-space: nowrap;
 }
@@ -400,5 +400,77 @@ span.award {
 
 .paper_details{
     opacity: 0.5;
-    font-size: 0.9em;
+    font-size: calc({{ site.font_scale }} * 0.9);
+}
+
+summary > * {
+  display: inline;
+}
+
+.pub-section {
+  margin: 0em 0 0em;
+}
+
+summary {
+  cursor: pointer;
+
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+
+  font-size: {{ site.font_scale }};
+  font-weight: 600;
+
+  padding: 0 0;
+}
+
+summary::before {
+  content: "✧";
+
+  display: inline-block;
+  width: 0.8em;
+
+  font-weight: normal;
+
+  transition: transform 0.15s ease;
+}
+
+details[open] > summary::before {
+  content: "✦";
+}
+
+.pub-count {
+  font-size: calc({{ site.font_scale }} * 1);
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+.pub-section-content {
+  margin-top: 0.4em;
+}
+
+.markdown-body summary > h3 {
+  display: inline;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+details[open] > summary {
+  margin-bottom: 16px;
+}
+
+details[open] > *:not(summary) {
+  animation: details-open 0.8s ease-out;
+}
+
+@keyframes details-open {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

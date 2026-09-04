@@ -15,6 +15,7 @@
         {% endif %}
         text-align: justify;
         min-width: 0;
+        width: auto;
     }
     figcaption {
         display: none;
@@ -38,6 +39,7 @@
     }
     .banner {
         margin: 5px;
+        width: auto;
     }
     .banner .banner-title {
         font-size: 1em;

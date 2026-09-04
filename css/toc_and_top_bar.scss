@@ -12,11 +12,17 @@
 
 #toc {
   position: fixed;
-  {{ margin_direction }}: {{ toc_dis }}%;
+
+  {% if site.toc.locationX == "left" %}
+  right: calc(100vw - var(--writing-gutter) + 0.4vw);
+  {% else %}
+  left: calc(100vw - var(--writing-gutter) + 0.4vw);
+  {% endif %}
+
   bottom: {{ site.toc.locationY }};
   transform: translateY(50%);
   width: auto;
-  max-height: 70vh;
+  max-width: min(17.4vw, 240px);
   max-width: 17.4%;
   overflow: auto;
   background-color: {{ site.toc.background_color }};
@@ -52,7 +58,7 @@
     width: calc(100% - 2 * {{ site.writing_area.margin }}%);
     {% endif %}
     box-sizing: border-box;
-    padding: 6px {{ site.writing_area.margin }}% 6px {{ site.writing_area.margin }}%;
+    padding: 6px var(--writing-gutter);
     text-align: left;
     font-size: 14px;
     overflow-x: auto;
@@ -84,7 +90,8 @@
     margin-right: auto;
     gap: 24px;
     min-width: 600px;
-    width: calc(100% - 2 * {{ site.writing_area.margin }}%);
+    width: calc(100% - 2 * var(--writing-gutter));
+    padding: 6px var(--writing-gutter);
     margin-top: 10pt;
     min-width: 0;
     box-sizing: border-box;

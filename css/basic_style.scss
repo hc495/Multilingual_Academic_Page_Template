@@ -7,10 +7,18 @@
     display: none;
 }
 
+:root {
+  --writing-gutter: max(
+    {{ site.writing_area.margin }}vw,
+    calc((100vw - {{ site.writing_area.max_width }}px) / 2)
+  );
+}
+
 // overall margin
 .container-lg {
-    max-width: none;
-    margin: 2% {{ site.writing_area.margin }}% 2% {{ site.writing_area.margin }}%;
+  width: calc(100% - 2 * var(--writing-gutter));
+  max-width: {{ site.writing_area.max_width }}px;
+  margin: 2% auto;
 }
 
 // writing area styles
@@ -190,8 +198,8 @@ figcaption {
         margin-top: 0% !important;
     {% endif %}
     display: block;
-    max-width: none;
-    margin: 2% {{ site.writing_area.margin }}% 10pt {{ site.writing_area.margin }}%;
+    width: calc(100% - 2 * var(--writing-gutter));
+    margin: 2% auto 10pt auto;
     background-color: {{ site.banner.background_color }};
     position: relative;
     /* background-image moved to ::before so we can control its opacity */

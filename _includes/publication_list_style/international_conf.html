@@ -120,6 +120,7 @@ ol.international_conf li::marker {
             </div>
         {%- endif -%}
         {%- if pages or h5 or infl -%}
+        <span class="paper_details">
         &nbsp;[   
             {%- if pages -%}
                 {{ pages }} Pages
@@ -140,6 +141,7 @@ ol.international_conf li::marker {
                 IF={{ infl }}
             {%- endif -%}
             ]&nbsp;
+        </span>
         {%- endif -%}
         </li>
         {%- endfor -%}

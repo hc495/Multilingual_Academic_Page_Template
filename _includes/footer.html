@@ -62,6 +62,69 @@
 </script>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    function updateActiveSection() {
+      // 每次都读取当前语言刚生成的 TOC
+      const tocLinks = Array.from(
+        document.querySelectorAll('#toc a[href^="#"]')
+      );
+
+      const sections = tocLinks
+        .map(link => {
+          const id = decodeURIComponent(
+            link.getAttribute("href").slice(1)
+          );
+          return document.getElementById(id);
+        })
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      const triggerY =
+        window.scrollY + window.innerHeight * 0.25;
+
+      let activeSection = sections[0];
+
+      for (const section of sections) {
+        if (section.offsetTop <= triggerY) {
+          activeSection = section;
+        } else {
+          break;
+        }
+      }
+
+      tocLinks.forEach(link => {
+        const id = decodeURIComponent(
+          link.getAttribute("href").slice(1)
+        );
+
+        link.classList.toggle(
+          "active",
+          id === activeSection.id
+        );
+      });
+    }
+
+    updateActiveSection();
+
+    window.addEventListener(
+      "scroll",
+      updateActiveSection,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateActiveSection
+    );
+
+    // 暴露给语言切换 / TOC 重建使用
+    window.updateScrollSpy = updateActiveSection;
+  });
+</script>
+
+<script>
 (function () {
   const TOC_ID = "toc";
   const CONTENT_SELECTOR = ".page-container .markdown-body";  
@@ -125,12 +188,16 @@
 
   window.updateTocForLang = function(lang) {
     buildToc(lang);
+
+    if (window.updateScrollSpy) {
+      window.updateScrollSpy();
+    }
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const lang = "en";
-    buildToc(lang);
-  });
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const lang = "en";
+  //   buildToc(lang);
+  // });
 })();
 </script>
 

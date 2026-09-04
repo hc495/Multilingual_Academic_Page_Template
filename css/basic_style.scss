@@ -397,3 +397,8 @@ span.award {
   background: {{ site.font_colors.selected_text_background_color }};
   color: {{ site.font_colors.selected_text_color }};
 }
+
+.paper_details{
+    opacity: 0.5;
+    font-size: 0.9em;
+}

@@ -374,7 +374,7 @@ span.award {
     font-weight: bold;
     padding: 0px 4px;
     border-radius: 6px;
-    background: {{ site.font_colors.award_color }}; 
+    background: {{ site.conference_badge.award_color }}; 
     font-size: 0.9em;
     white-space: nowrap;
 }

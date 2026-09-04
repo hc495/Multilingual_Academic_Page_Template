@@ -161,7 +161,6 @@ font_colors:
   link_hover_shadow: "rgba(13, 72, 201, 0.85)"
   title_underline_color: "#000000"
   end_mark_color: "#000000"
-  award_color: "#f00a00"
   selected_text_background_color: "#512aff"
   selected_text_color: "#ffffff"
 
@@ -202,6 +201,7 @@ details_panel:
 conference_badge:
   display: True 
   background_color: "#bddcff"
+  award_color: "#f00a00"
 
 # ------------------------------------------
 # Advanced

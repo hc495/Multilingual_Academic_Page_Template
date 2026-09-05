@@ -14,9 +14,9 @@
   position: fixed;
 
   {% if site.toc.locationX == "left" %}
-  right: calc(100vw - var(--writing-gutter) + 0.4vw);
+  right: calc(100vw - var(--writing-gutter));
   {% else %}
-  left: calc(100vw - var(--writing-gutter) + 0.4vw);
+  left: calc(100vw - var(--writing-gutter));
   {% endif %}
 
   bottom: {{ site.toc.locationY }};

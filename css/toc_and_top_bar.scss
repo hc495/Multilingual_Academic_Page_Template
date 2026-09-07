@@ -11,11 +11,11 @@
 #toc {
   position: fixed;
 
-  {% if site.toc.locationX == "left" %}
+  {%- if site.toc.locationX == "left" -%}
   right: calc(100vw - var(--writing-gutter) + 0.2vw);
-  {% else %}
+  {%- else -%}
   left: calc(100vw - var(--writing-gutter) + 0.2vw);
-  {% endif %}
+  {%- endif -%}
 
   bottom: {{ site.toc.locationY }};
   transform: translateY(50%);
@@ -44,7 +44,7 @@
 }
 
 #toc a::before {
-  content: "‚ú?";
+  content: "ÈâÅÔøΩ";
   position: absolute;
   left: -1em;
   top: 50%;

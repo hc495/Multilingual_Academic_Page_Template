@@ -2,8 +2,6 @@
 ---
 
 // TOC settings
-{%- assign toc_dis = 100.4 | minus: site.writing_area.margin -%}
-
 {%- assign margin_direction = "left" -%}
 
 {%- if site.toc.locationX == "left" -%}
@@ -14,9 +12,9 @@
   position: fixed;
 
   {% if site.toc.locationX == "left" %}
-  right: calc(100vw - var(--writing-gutter));
+  right: calc(100vw - var(--writing-gutter) + 0.2vw);
   {% else %}
-  left: calc(100vw - var(--writing-gutter));
+  left: calc(100vw - var(--writing-gutter) + 0.2vw);
   {% endif %}
 
   bottom: {{ site.toc.locationY }};
@@ -46,7 +44,7 @@
 }
 
 #toc a::before {
-  content: "âœ¦";
+  content: "âœ?";
   position: absolute;
   left: -1em;
   top: 50%;

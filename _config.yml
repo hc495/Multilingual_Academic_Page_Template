@@ -171,7 +171,7 @@ background:
   color: "#e9f0ff"
   pattern: "radial-gradient(circle at 20px 20px, #ffffff 5px, transparent 0)"
   pattern_size: "40pt 40pt"
-  image: "https://s2.loli.net/2026/01/12/QFYKf58HABSsLZk.jpg" ## Empty to use the pure color + pattern
+  image: "url(https://s2.loli.net/2026/01/12/QFYKf58HABSsLZk.jpg)" ## Empty to use the pure color + pattern
 
 ## Writing Area (i.e., the area with markdown texts)
 writing_area:

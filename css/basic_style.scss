@@ -175,7 +175,9 @@ figcaption {
 
 {%- if site.background.image -%}
     body {
-        background-image: url('{{ site.background.image }}');
+        {% if site.banner.background_image != "Null" and site.background.pattern != ""  %}
+            background-image: {{ site.background.image }};
+        {%- endif -%}
         min-height: 100%;
         background-size: cover;
         background-attachment: fixed;
@@ -184,7 +186,9 @@ figcaption {
     }
 {%- else -%}
     body{
-        background: {{ site.background.pattern }};
+        {% if site.background.pattern != "Null" and site.background.pattern != "" -%}
+            background-image: {{ site.background.pattern }};
+        {%- endif -%}
         background-size: {{ site.background.pattern_size }};
         background-color: {{ site.background.color }};
         background-attachment: fixed;
@@ -214,7 +218,9 @@ figcaption {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('{{ site.banner.background_image }}');
+    {% if site.banner.background_image != "Null" and site.background.pattern != ""  %}
+        background-image: {{ site.banner.background_image }};
+    {%- endif -%}
     /* opacity can be set via site.banner.background_opacity or defaults to 0.5 */
     opacity: {{ site.banner.background_opacity | default: 0.5 }};
     pointer-events: none;

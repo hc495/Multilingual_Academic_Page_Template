@@ -25,7 +25,11 @@
     {%- endif -%}
 {%- endfor -%}
 
-{%- assign lang = include.lang -%}
+{%- if include.count_only -%}
+    {{- count -}}
+{%- else -%}
+    {%- assign lang = include.lang -%}
 
 {{ site.publication_statics.translations[lang].total_publications}} {{ count }}, {{ site.publication_statics.translations[lang].cif }} {{ suminfl }}, {{ site.publication_statics.translations[lang].pages }} {{ sumpages }}.
 {:.lang .lang-{{ lang }}}
+{%- endif -%}

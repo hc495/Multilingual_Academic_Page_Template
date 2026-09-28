@@ -91,6 +91,9 @@
     .publication-filter-row {
         display: block;
     }
+    .publication-filter-row + .publication-filter-row::before {
+        left: 0;
+    }
     .publication-filter-label {
         display: block;
         margin-bottom: 0.35em;

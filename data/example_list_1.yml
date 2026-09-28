@@ -33,6 +33,9 @@
   other: "Oral" ## Can be empty.  
   award: 
     - "Best Paper Award" ## Can be empty.
+  tags: ## Optional; each value becomes a paper-filter button.
+    - "Example Topic"
+    - "Mechanistic Interpretability"
 
 - title: "Example Paper Title2"
   authors:

@@ -25,9 +25,9 @@
         {%- endif -%}
     
         {%- if item.basic_url -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}"><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}"><strong>{{ title }}</strong><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}
@@ -63,6 +63,7 @@
         {%- if item.bibtex -%}
     |&nbsp;<a class="collapse-clicker" onclick="$('.{{ item.id }}_bibtex').slideToggle(200)">Bibtex</a>&nbsp;
         {%- endif -%}
+        {%- if pages -%}<span class="paper_details">&nbsp;[{{ pages }} Pages]</span>{%- endif -%}
         {%- if item.abstract -%}
             <div class="collapse {{ item.id }}_abstract" id="{{ item.id }}_abstract">
                 <div class="panel panel-primary">
@@ -81,7 +82,6 @@
                 </div>
             </div>
         {%- endif -%}
-        {%- if pages -%}<span class="paper_details">&nbsp;[{{ pages }} Pages]{%- endif -%}</span>
         </li>
     {%- endfor -%}
 </ol>

@@ -6,6 +6,7 @@
   data-publication-filters
   data-lang="{{ current_lang }}"
   data-selection-mode="{{ site.publication_filter.selection_mode | default: 'multiple' }}"
+  data-tag-min-count="{{ site.publication_filter.tag_min_count | default: 1 }}"
   data-preprint-as-venue="{{ site.publication_filter.preprint_as_venue }}"
   data-show-award-filter="{{ site.publication_filter.show_award_filter }}"
   data-auto-open-sections="{{ site.publication_filter.auto_open_sections }}"
@@ -26,6 +27,12 @@
   <div class="publication-filter-row">
     <span class="publication-filter-label">{{ labels.venue | default: 'Venue' }}</span>
     <div class="publication-filter-options" data-filter-options="venue" role="group" aria-label="{{ labels.venue | default: 'Venue' | escape }}"></div>
+  </div>
+  {%- endif -%}
+  {%- if site.publication_filter.show_tag_filter != false -%}
+  <div class="publication-filter-row">
+    <span class="publication-filter-label">{{ labels.tag | default: 'Tags' }}</span>
+    <div class="publication-filter-options" data-filter-options="tag" role="group" aria-label="{{ labels.tag | default: 'Tags' | escape }}"></div>
   </div>
   {%- endif -%}
   <div class="publication-filter-meta">

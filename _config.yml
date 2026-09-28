@@ -119,12 +119,14 @@ publication_list:
     opened: False
 
 ## Client-side filters shown below each publication-list title.
-## Year and venue options are collected automatically from the publication data.
+## Year, venue, and tag options are collected automatically from the publication data.
 publication_filter:
   enabled: True ## Set to False to hide the controls and disable filtering.
   show_year_filter: True
   show_venue_filter: True
-  selection_mode: multiple ## `multiple` or `single`; AND between year and venue groups.
+  show_tag_filter: True ## Build tag buttons automatically from each paper's `tags` list.
+  tag_min_count: 3 ## Hide only topic tags represented by fewer papers than this number.
+  selection_mode: multiple ## `multiple` or `single`; AND between year, venue, and tag groups.
   preprint_as_venue: True ## Show Pre-print as an option in the venue row.
   show_award_filter: True ## Show an Awarded Papers option for entries whose `award` is non-empty.
   auto_open_sections: True ## Open folded sections that contain matches while filtering.
@@ -132,10 +134,16 @@ publication_filter:
   show_clear_button: True
   show_result_count: True
   show_option_count: True ## Show the number of papers represented by each filter button.
+  separator_style: ## Subtle short line between Year, Venue, and Tags rows.
+    enabled: True
+    color: '#2a66cc'
+    opacity: 0.16
+    spacing: '0.22em'
   labels:
     en:
       year: 'Year'
       venue: 'Venue'
+      tag: 'Tags'
       all: 'All'
       clear: 'Clear filters'
       award: 'Awarded Papers'
@@ -144,6 +152,7 @@ publication_filter:
     jp:
       year: '年'
       venue: '会議・種別'
+      tag: 'タグ'
       all: 'すべて'
       clear: '絞り込みを解除'
       award: '受賞論文'
@@ -152,6 +161,7 @@ publication_filter:
     zh:
       year: '年份'
       venue: '会议・类型'
+      tag: '标签'
       all: '全部'
       clear: '清除筛选'
       award: '获奖论文'

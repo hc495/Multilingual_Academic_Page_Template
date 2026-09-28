@@ -200,4 +200,8 @@
 })();
 </script>
 
+{%- if site.publication_filter.enabled -%}
+<script src="{{ '/assets/publication-filter.js' | relative_url }}"></script>
+{%- endif -%}
+
 {{ site.more_footers }}

@@ -19,11 +19,15 @@
         {%- assign year = item.year -%}
         {%- assign basic_url = item.basic_url -%}
         {%- assign urls = item.urls -%}
+        {%- assign is_awarded = false -%}
+        {%- if item.award and item.award != empty -%}
+            {%- assign is_awarded = true -%}
+        {%- endif -%}
     
         {%- if item.basic_url -%}
-            <li><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}"><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li><strong>{{ title }}</strong><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}"><strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

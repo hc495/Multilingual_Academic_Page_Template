@@ -85,4 +85,19 @@
     div.img_margin {
         display: none !important;
     }
+    .publication-filters {
+        padding: 0.55em 0.65em;
+    }
+    .publication-filter-row {
+        display: block;
+    }
+    .publication-filter-label {
+        display: block;
+        margin-bottom: 0.35em;
+        padding-top: 0;
+    }
+    .publication-filter-meta {
+        align-items: flex-end;
+        flex-direction: column;
+    }
 }

@@ -23,20 +23,44 @@ ol.domestic_conf li::marker {
             {%- assign venue_short = venues[venue].short -%}
             {%- assign h5 = venues[venue].h5 -%}
             {%- assign infl = venues[venue].infl -%}
+            {%- assign venue_filter_key = venues[venue].filter_alias | default: venue_short | default: venue -%}
+            {%- assign venue_filter_label = venues[venue].filter_alias | default: venue_short | default: venue_name | default: venue -%}
+            {%- assign venue_show_in_filter = true -%}
+            {%- if venues[venue].show_in_filter == false -%}
+                {%- assign venue_show_in_filter = false -%}
+            {%- endif -%}
+            {%- assign venue_high_priority = false -%}
+            {%- if venues[venue].high_priority == true -%}
+                {%- assign venue_high_priority = true -%}
+            {%- endif -%}
         {%- else -%}
             {%- assign venue_name = item.venue_jp -%}
             {%- assign venue_short = item.venue_short -%}
             {%- assign h5 = item.h5 -%}
             {%- assign infl = item.infl -%}
+            {%- assign venue_filter_key = item.filter_alias | default: venue_short | default: venue -%}
+            {%- assign venue_filter_label = item.filter_alias | default: venue_short | default: venue_name | default: venue -%}
+            {%- assign venue_show_in_filter = true -%}
+            {%- if item.show_in_filter == false -%}
+                {%- assign venue_show_in_filter = false -%}
+            {%- endif -%}
+            {%- assign venue_high_priority = false -%}
+            {%- if item.high_priority == true -%}
+                {%- assign venue_high_priority = true -%}
+            {%- endif -%}
+        {%- endif -%}
+        {%- assign is_awarded = false -%}
+        {%- if item.award and item.award != empty -%}
+            {%- assign is_awarded = true -%}
         {%- endif -%}
         {%- assign year = item.year -%}
         {%- assign basic_url = item.basic_url -%}
         {%- assign urls = item.urls -%}
         
         {%- if item.basic_url -%}
-            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li>{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}{%- if item.review -%}▲{%- endif -%}{%- if item.second -%}†{%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

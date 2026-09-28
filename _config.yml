@@ -108,12 +108,71 @@ publication_list:
     calculate_statics: True
     use_fold: False
     opened: False
+  - file: 'example_theses'
+    title:
+      en: 'Thesis'
+      jp: '学位論文'
+      zh: '学位论文'
+    style: 'thesis'
+    calculate_statics: True
+    use_fold: True
+    opened: False
+
+## Client-side filters shown below each publication-list title.
+## Year and venue options are collected automatically from the publication data.
+publication_filter:
+  enabled: True ## Set to False to hide the controls and disable filtering.
+  show_year_filter: True
+  show_venue_filter: True
+  selection_mode: multiple ## `multiple` or `single`; AND between year and venue groups.
+  preprint_as_venue: True ## Show Pre-print as an option in the venue row.
+  show_award_filter: True ## Show an Awarded Papers option for entries whose `award` is non-empty.
+  auto_open_sections: True ## Open folded sections that contain matches while filtering.
+  hide_empty_sections: True ## Hide publication sections with no matching papers.
+  show_clear_button: True
+  show_result_count: True
+  show_option_count: True ## Show the number of papers represented by each filter button.
+  labels:
+    en:
+      year: 'Year'
+      venue: 'Venue'
+      all: 'All'
+      clear: 'Clear filters'
+      award: 'Awarded Papers'
+      preprint: 'Pre-print'
+      results: 'Showing {visible} of {total} papers'
+    jp:
+      year: '年'
+      venue: '会議・種別'
+      all: 'すべて'
+      clear: '絞り込みを解除'
+      award: '受賞論文'
+      preprint: 'プレプリント'
+      results: '{total}件中{visible}件を表示'
+    zh:
+      year: '年份'
+      venue: '会议・类型'
+      all: '全部'
+      clear: '清除筛选'
+      award: '获奖论文'
+      preprint: '预印本'
+      results: '显示 {visible} / {total} 篇'
+  button_style:
+    background_color: 'rgba(255, 255, 255, 0.7)'
+    text_color: '#2a66cc'
+    border: '1px solid rgba(42, 102, 204, 0.45)'
+    border_radius: '999px'
+    padding: '0.2em 0.7em'
+    hover_background_color: 'rgba(45, 118, 255, 0.12)'
+    active_background_color: '#2a66cc'
+    active_text_color: '#ffffff'
+    active_border_color: '#2a66cc'
 
 name_to_bold: # Which author names should be in bold?
   - 'Saved Author 1'
   - 'Saved Author 2'
 
-publication_statics: # Init-* = e.g. statics of the Thesis
+publication_statics: # Init-* = publications that are not included in publication_list.
   init_pages: 0
   init_if: 0
   init_count: 0

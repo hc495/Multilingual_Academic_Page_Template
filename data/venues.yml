@@ -1,14 +1,43 @@
+# Publication-filter metadata:
+# - show_in_filter: False hides this venue from the venue-filter buttons.
+# - filter_alias: "Shared Group" changes its button label; venues sharing an alias are grouped.
+# - high_priority: True pins this venue (or its shared filter_alias group) before ordinary venues.
+# - If filter_alias is omitted, the filter uses `short`, then `name` as a fallback.
+
 iclr:
   name: "International Conference on Learning Representations"
   short: "ICLR" ## Can be empty
+  show_in_filter: True
+  high_priority: True
   h5: 362 ## Can be empty
   infl: 48.9 ## Can be empty
 
 NeurIPS:
   name: "Annual Conference on Neural Information Processing Systems"
   short: "NeurIPS"
+  show_in_filter: True
+  high_priority: True
   h5: 371
   infl: 23.3
 
 example1:
   name: "Example Venue"
+  show_in_filter: True
+  filter_alias: "Example Group"
+
+example2:
+  name: "Another Example Venue"
+  short: "Example 2"
+  show_in_filter: True
+  filter_alias: "Example Group" ## Same alias: grouped into the same filter button as example1.
+
+thesis:
+  name: "Thesis"
+  name_jp: "学位論文"
+  name_zh: "学位论文"
+  show_in_filter: True
+  filter_key: "thesis"
+  filter_alias:
+    en: "Thesis"
+    jp: "学位論文"
+    zh: "学位论文"

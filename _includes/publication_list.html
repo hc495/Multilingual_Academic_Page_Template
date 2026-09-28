@@ -1,11 +1,12 @@
 {%- assign current_lang = include.lang -%}
 
+<div class="publication-list" data-publication-list data-lang="{{ current_lang }}">
 {%- for item in site.publication_list -%}
     {%- if item.use_fold -%}
         {%- assign papers = site.data[item.file] -%}
         {%- if item.title[current_lang] -%}
             {%- if item.instructions[current_lang] -%}
-                <details class="lang lang-{{ current_lang }} active pub-section" ontoggle="
+                <details class="lang lang-{{ current_lang }} active pub-section" data-publication-section ontoggle="
                   this.querySelector('summary').style.setProperty(
                     'margin-bottom',
                     this.open ? '0em' : '',
@@ -17,22 +18,23 @@
                     this.open ? 'important' : ''
                   );
                 " {% if item.opened %} open {% endif %}>
-                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count">({{ papers | size }})</span></summary>
+                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count" data-publication-section-count data-total="{{ papers | size }}">({{ papers | size }})</span></summary>
             {%- else -%}
-                <details class="lang lang-{{ current_lang }} active pub-section" {% if item.opened %} open {% endif %}>
-                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count">({{ papers | size }})</span></summary>
+                <details class="lang lang-{{ current_lang }} active pub-section" data-publication-section {% if item.opened %} open {% endif %}>
+                <summary><h3 class="lang lang-{{ current_lang }} active"> {{ item.title[current_lang] }}</h3><span class="pub-count" data-publication-section-count data-total="{{ papers | size }}">({{ papers | size }})</span></summary>
             {%- endif -%}
 
             {%- if item.instructions[current_lang] -%}
                 <div class="lang lang-{{ current_lang }} active" style="font-size:calc({{ site.font_scale }} * 0.9); margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
             {%- endif -%}
                 <div class="lang lang-{{ current_lang }} active">
-            {%- include publication_list_style/index.html style=item.style file=item.file -%}
+            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang -%}
             </div>
             </details>
         {%- endif -%}
     {%- else -%}
         {%- if item.title[current_lang] -%}
+            <div class="publication-flat-section" data-publication-section>
             {%- if item.instructions[current_lang] -%}
                 <h3 class="lang lang-{{ current_lang }} active" style="margin-bottom: 0em"> {{ item.title[current_lang] }}</h3>
             {%- else -%}
@@ -43,8 +45,10 @@
                 <div class="lang lang-{{ current_lang }} active" style="font-size:0.9em; margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
             {%- endif -%}
             <div class="lang lang-{{ current_lang }} active">
-            {%- include publication_list_style/index.html style=item.style file=item.file -%}
+            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang -%}
+            </div>
             </div>
         {%- endif -%}
     {%- endif -%}
 {%- endfor -%}
+</div>

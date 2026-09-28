@@ -21,3 +21,7 @@ ol.thesis li::marker {
 {%- if include.style == 'preprint' -%}
     {%- include publication_list_style/preprint.html file=item.file -%}
 {%- endif -%}
+
+{%- if include.style == 'thesis' -%}
+    {%- include publication_list_style/thesis.html file=item.file lang=include.lang -%}
+{%- endif -%}

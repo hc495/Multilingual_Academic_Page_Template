@@ -1,0 +1,25 @@
+- id: example_phd_thesis
+  venue: thesis
+  title:
+    en: "Example Ph.D. Dissertation"
+    jp: "博士論文の例"
+    zh: "博士学位论文示例"
+  authors:
+    - name: "Saved Author 1"
+  degree:
+    en: "Ph.D. Dissertation"
+    jp: "博士論文"
+    zh: "博士学位论文"
+  institution:
+    en: "Example University"
+    jp: "サンプル大学"
+    zh: "示例大学"
+  year: 2025
+  pages: 100
+  basic_url: "https://example.com/thesis.pdf"
+  urls:
+    - url: "https://example.com/thesis.pdf"
+      label:
+        en: "PDF"
+        jp: "PDF"
+        zh: "PDF"

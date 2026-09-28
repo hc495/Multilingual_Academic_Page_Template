@@ -1,0 +1,40 @@
+{%- if site.publication_filter.enabled -%}
+{%- assign current_lang = include.lang -%}
+{%- assign labels = site.publication_filter.labels[current_lang] | default: site.publication_filter.labels.en -%}
+<div
+  class="publication-filters lang lang-{{ current_lang }}"
+  data-publication-filters
+  data-lang="{{ current_lang }}"
+  data-selection-mode="{{ site.publication_filter.selection_mode | default: 'multiple' }}"
+  data-preprint-as-venue="{{ site.publication_filter.preprint_as_venue }}"
+  data-show-award-filter="{{ site.publication_filter.show_award_filter }}"
+  data-auto-open-sections="{{ site.publication_filter.auto_open_sections }}"
+  data-hide-empty-sections="{{ site.publication_filter.hide_empty_sections }}"
+  data-show-option-count="{{ site.publication_filter.show_option_count }}"
+  data-all-label="{{ labels.all | default: 'All' | escape }}"
+  data-award-label="{{ labels.award | default: 'Awarded Papers' | escape }}"
+  data-preprint-label="{{ labels.preprint | default: 'Pre-print' | escape }}"
+  data-results-template="{{ labels.results | escape }}"
+>
+  {%- if site.publication_filter.show_year_filter != false -%}
+  <div class="publication-filter-row">
+    <span class="publication-filter-label">{{ labels.year | default: 'Year' }}</span>
+    <div class="publication-filter-options" data-filter-options="year" role="group" aria-label="{{ labels.year | default: 'Year' | escape }}"></div>
+  </div>
+  {%- endif -%}
+  {%- if site.publication_filter.show_venue_filter != false -%}
+  <div class="publication-filter-row">
+    <span class="publication-filter-label">{{ labels.venue | default: 'Venue' }}</span>
+    <div class="publication-filter-options" data-filter-options="venue" role="group" aria-label="{{ labels.venue | default: 'Venue' | escape }}"></div>
+  </div>
+  {%- endif -%}
+  <div class="publication-filter-meta">
+    {%- if site.publication_filter.show_clear_button != false -%}
+    <button class="publication-filter-clear" type="button" data-filter-clear>{{ labels.clear | default: 'Clear filters' }}</button>
+    {%- endif -%}
+    {%- if site.publication_filter.show_result_count != false -%}
+    <span class="publication-filter-results" data-filter-results aria-live="polite"></span>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}

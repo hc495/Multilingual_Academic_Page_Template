@@ -1,0 +1,60 @@
+{%- assign papers = site.data[include.file] -%}
+{%- assign current_lang = include.lang -%}
+{%- assign know_authors = site.data.authors -%}
+{%- assign thesis_venue = site.data.venues.thesis -%}
+{%- assign venue_filter_key = thesis_venue.filter_key | default: 'thesis' -%}
+{%- assign venue_filter_label = thesis_venue.filter_alias[current_lang] | default: thesis_venue.short | default: thesis_venue.name -%}
+{%- assign venue_show_in_filter = true -%}
+{%- if thesis_venue.show_in_filter == false -%}
+  {%- assign venue_show_in_filter = false -%}
+{%- endif -%}
+{%- assign venue_high_priority = false -%}
+{%- if thesis_venue.high_priority == true -%}
+  {%- assign venue_high_priority = true -%}
+{%- endif -%}
+
+{%- if papers -%}
+<div class="wide_list">
+  <ol class="thesis">
+  {%- for item in papers -%}
+    {%- assign title = item.title[current_lang] | default: item.title.en -%}
+    {%- assign degree = item.degree[current_lang] | default: item.degree.en -%}
+    {%- assign note = item.note[current_lang] -%}
+    {%- assign institution = item.institution[current_lang] | default: item.institution.en -%}
+    {%- assign is_awarded = false -%}
+    {%- if item.award and item.award != empty -%}
+      {%- assign is_awarded = true -%}
+    {%- endif -%}
+    <li id="{{ item.id }}" class="publication-item" data-year="{{ item.year }}" data-venue="{{ item.venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}">
+      {%- if item.basic_url -%}
+        <a href="{{ item.basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+      {%- else -%}
+        <strong>{{ title }}</strong><br>
+      {%- endif -%}
+      {%- for author in item.authors -%}
+        {%- if know_authors[author.name] -%}
+          {%- assign displayname = know_authors[author.name].name -%}
+          {%- assign displayurl = know_authors[author.name].url -%}
+        {%- else -%}
+          {%- assign displayname = author.name -%}
+          {%- assign displayurl = author.url -%}
+        {%- endif -%}
+        {%- unless forloop.first -%},&nbsp;{%- endunless -%}
+        {%- if site.name_to_bold contains displayname -%}<strong>{%- endif -%}
+        {%- if displayurl -%}<a href="{{ displayurl }}" target="_blank">{{ displayname }}</a>{%- else -%}{{ displayname }}{%- endif -%}
+        {%- if site.name_to_bold contains displayname -%}</strong>{%- endif -%}
+      {%- endfor -%}
+      <br>
+      {{ degree }}{% if note %} - {{ note }}{% endif %} @ {{ institution }}. <strong>{{ item.year }}</strong>.
+      {%- if item.pages %} <span class="paper_details">[{{ item.pages }} Pages]</span>{%- endif -%}
+      {%- if item.urls -%}<br>
+        {%- for link in item.urls -%}
+          {%- assign link_label = link.label[current_lang] | default: link.label.en -%}
+          <a href="{{ link.url }}" target="_blank">{{ link_label }}</a>{%- unless forloop.last %}&nbsp;|&nbsp;{%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+  </ol>
+</div>
+{%- endif -%}

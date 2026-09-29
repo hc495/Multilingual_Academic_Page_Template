@@ -173,11 +173,11 @@ figcaption {
     text-align: center;
 }
 
-{%- if site.background.image -%}
+{%- assign background_image = site.background.image | default: '' | strip -%}
+{%- assign background_pattern = site.background.pattern | default: '' | strip -%}
+{%- if background_image != '' and background_image != 'Null' and background_image != 'None' -%}
     body {
-        {% if site.banner.background_image != "Null" and site.background.pattern != ""  %}
-            background-image: {{ site.background.image }};
-        {%- endif -%}
+        background-image: {{ background_image }};
         min-height: 100%;
         background-size: cover;
         background-attachment: fixed;
@@ -186,8 +186,8 @@ figcaption {
     }
 {%- else -%}
     body{
-        {% if site.background.pattern != "Null" and site.background.pattern != "" -%}
-            background-image: {{ site.background.pattern }};
+        {% if background_pattern != '' and background_pattern != 'Null' and background_pattern != 'None' -%}
+            background-image: {{ background_pattern }};
         {%- endif -%}
         background-size: {{ site.background.pattern_size }};
         background-color: {{ site.background.color }};
@@ -218,8 +218,9 @@ figcaption {
     content: '';
     position: absolute;
     inset: 0;
-    {% if site.banner.background_image != "Null" and site.background.pattern != ""  %}
-        background-image: {{ site.banner.background_image }};
+    {% assign banner_background_image = site.banner.background_image | default: '' | strip %}
+    {% if banner_background_image != '' and banner_background_image != 'Null' and banner_background_image != 'None' %}
+        background-image: {{ banner_background_image }};
     {%- endif -%}
     /* opacity can be set via site.banner.background_opacity or defaults to 0.5 */
     opacity: {{ site.banner.background_opacity | default: 0.5 }};

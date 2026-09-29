@@ -21,7 +21,6 @@
     - url: "https://github.com/PAPER_CODE_REPO"
       label: "Github"
   abstract: "A Very Good Paper! SotA on 30 dataset!"
-  id: "nips1" ## Should be unique
   bibtex: |
     @inproceedings{paper_id,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;title={Example Paper Title},<br>

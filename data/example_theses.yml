@@ -1,5 +1,4 @@
-- id: example_phd_thesis
-  venue: thesis
+- venue: thesis
   title:
     en: "Example Ph.D. Dissertation"
     jp: "博士論文の例"

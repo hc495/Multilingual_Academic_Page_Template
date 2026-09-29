@@ -58,9 +58,9 @@ ol.international_conf li::marker {
         {%- assign urls = item.urls -%}
         
         {%- if item.basic_url -%}
-            <li id="{{ item.id }}" class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li id="{{ item.id }}" class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<strong>{{ title }}</strong><br>
+            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}
@@ -115,7 +115,7 @@ ol.international_conf li::marker {
             {%- else -%}
                 &nbsp;|&nbsp;
             {%- endif -%}
-            <a class="collapse-clicker" onclick="$('.{{ item.id }}_abstract').slideToggle(200)">Abstract</a>
+            <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=abstract]').slideToggle(200)">Abstract</a>
         {%- endif -%}
         {%- if item.bibtex -%}
             {%- if first_term -%}
@@ -123,7 +123,7 @@ ol.international_conf li::marker {
             {%- else -%}
                 &nbsp;|&nbsp;
             {%- endif -%}
-            <a class="collapse-clicker" onclick="$('.{{ item.id }}_bibtex').slideToggle(200)">Bibtex</a>
+            <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=bibtex]').slideToggle(200)">Bibtex</a>
         {%- endif -%}
         {%- if pages or h5 or infl -%}
         <span class="paper_details">
@@ -150,7 +150,7 @@ ol.international_conf li::marker {
         </span>
         {%- endif -%}
         {%- if item.abstract -%}
-            <div class="collapse {{ item.id }}_abstract" id="{{ item.id }}_abstract">
+            <div class="collapse" data-collapse-panel="abstract">
                 <div class="panel panel-primary">
                     <div class="panel-body details-panel">
                         {{- item.abstract -}}
@@ -159,7 +159,7 @@ ol.international_conf li::marker {
             </div>
         {%- endif -%}
         {%- if item.bibtex -%}
-            <div class="collapse {{ item.id }}_bibtex" id="{{ item.id }}_bibtex">
+            <div class="collapse" data-collapse-panel="bibtex">
                 <div class="panel panel-primary">
                     <div class="panel-body details-panel">
                         {{- item.bibtex -}}

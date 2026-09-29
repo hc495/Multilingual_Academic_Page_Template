@@ -25,7 +25,7 @@
     {%- if item.award and item.award != empty -%}
       {%- assign is_awarded = true -%}
     {%- endif -%}
-    <li id="{{ item.id }}" class="publication-item" data-year="{{ item.year }}" data-venue="{{ item.venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">
+    <li class="publication-item" data-year="{{ item.year }}" data-venue="{{ item.venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">
       {%- if item.basic_url -%}
         <a href="{{ item.basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
       {%- else -%}

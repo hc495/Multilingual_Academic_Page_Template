@@ -119,7 +119,7 @@ ol.domestic_conf li::marker {
             {%- else -%}
                 &nbsp;|&nbsp;
             {%- endif -%}
-            <a class="collapse-clicker" onclick="$('.{{ item.id }}_abstract').slideToggle(200)">Abstract</a>
+            <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=abstract]').slideToggle(200)">Abstract</a>
         {%- endif -%}
         {%- if item.bibtex -%}
             {%- if first_term -%}
@@ -127,7 +127,7 @@ ol.domestic_conf li::marker {
             {%- else -%}
                 &nbsp;|&nbsp;
             {%- endif -%}
-            <a class="collapse-clicker" onclick="$('.{{ item.id }}_bibtex').slideToggle(200)">Bibtex</a>
+            <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=bibtex]').slideToggle(200)">Bibtex</a>
         {%- endif -%}
         {%- if pages or h5 or infl -%}
         <span class="paper_details">
@@ -154,7 +154,7 @@ ol.domestic_conf li::marker {
         </span>
         {%- endif -%}
         {%- if item.abstract -%}
-            <div class="collapse {{ item.id }}_abstract" id="{{ item.id }}_abstract">
+            <div class="collapse" data-collapse-panel="abstract">
                 <div class="panel panel-primary">
                     <div class="panel-body details-panel">
                         {{- item.abstract -}}
@@ -163,7 +163,7 @@ ol.domestic_conf li::marker {
             </div>
         {%- endif -%}
         {%- if item.bibtex -%}
-            <div class="collapse {{ item.id }}_bibtex" id="{{ item.id }}_bibtex">
+            <div class="collapse" data-collapse-panel="bibtex">
                 <div class="panel panel-primary">
                     <div class="panel-body details-panel">
                         {{- item.bibtex -}}

@@ -134,6 +134,7 @@ publication_filter:
   show_clear_button: True
   show_result_count: True
   show_option_count: True ## Show the number of papers represented by each filter button.
+  show_fractional_counts: True ## While filtering, show current/total counts everywhere.
   separator_style: ## Subtle short line between Year, Venue, and Tags rows.
     enabled: True
     color: '#2a66cc'

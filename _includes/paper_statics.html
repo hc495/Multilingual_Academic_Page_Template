@@ -26,10 +26,14 @@
 {%- endfor -%}
 
 {%- if include.count_only -%}
-    {{- count -}}
+    {%- if include.dynamic -%}
+        <span data-publication-total-count data-lang="{{ include.lang }}" data-total="{{ count }}">{{ count }}</span>
+    {%- else -%}
+        {{- count -}}
+    {%- endif -%}
 {%- else -%}
     {%- assign lang = include.lang -%}
 
-{{ site.publication_statics.translations[lang].total_publications}} {{ count }}, {{ site.publication_statics.translations[lang].cif }} {{ suminfl }}, {{ site.publication_statics.translations[lang].pages }} {{ sumpages }}.
+{{ site.publication_statics.translations[lang].total_publications}} <span data-publication-total-count data-lang="{{ lang }}" data-total="{{ count }}">{{ count }}</span>, {{ site.publication_statics.translations[lang].cif }} {{ suminfl }}, {{ site.publication_statics.translations[lang].pages }} {{ sumpages }}.
 {:.lang .lang-{{ lang }}}
 {%- endif -%}

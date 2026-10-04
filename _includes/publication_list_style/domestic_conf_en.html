@@ -117,14 +117,8 @@ ol.domestic_conf li::marker {
             {%- endif -%}
             <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=abstract]').slideToggle(200)">Abstract</a>
         {%- endif -%}
-        {%- if item.bibtex -%}
-            {%- if first_term -%}
-                {%- assign first_term = false -%}
-            {%- else -%}
-                &nbsp;|&nbsp;
-            {%- endif -%}
-            <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=bibtex]').slideToggle(200)">Bibtex</a>
-        {%- endif -%}
+        {%- unless first_term -%}&nbsp;|&nbsp;{%- endunless -%}
+        <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=bibtex]').slideToggle(200)">Bibtex</a>
         {%- if pages or h5 or infl -%}
         <span class="paper_details">
         &nbsp;[   
@@ -158,15 +152,7 @@ ol.domestic_conf li::marker {
                 </div>
             </div>
         {%- endif -%}
-        {%- if item.bibtex -%}
-            <div class="collapse" data-collapse-panel="bibtex">
-                <div class="panel panel-primary">
-                    <div class="panel-body details-panel">
-                        {{- item.bibtex -}}
-                    </div>
-                </div>
-            </div>
-        {%- endif -%}
+        {%- include publication_bibtex_panel.html paper=item style='domestic_conf_en' file=include.file index=forloop.index -%}
         </li>
         {%- endfor -%}
     </ol>

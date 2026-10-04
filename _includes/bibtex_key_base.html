@@ -1,0 +1,11 @@
+{%- assign key_first_author = include.paper.authors.first.name -%}
+{%- assign key_author_name = site.data.authors[key_first_author].name | default: key_first_author -%}
+{%- if key_author_name contains ',' -%}
+  {%- assign key_surname = key_author_name | split: ',' | first -%}
+{%- else -%}
+  {%- assign key_surname = key_author_name | split: ' ' | last -%}
+{%- endif -%}
+{%- assign key_surname = key_surname | slugify: 'ascii' | default: 'anon' -%}
+{%- assign key_title = include.paper.title.en | default: include.paper.title -%}
+{%- assign key_word = key_title | slugify: 'ascii' | split: '-' | first | default: 'paper' -%}
+{{- key_surname -}}{{- include.paper.year -}}{{- key_word -}}

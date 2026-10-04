@@ -1,0 +1,23 @@
+{%- comment -%}Only duplicate short keys get a numeric suffix, across all publication lists.{%- endcomment -%}
+{%- capture short_key -%}{%- include bibtex_key_base.html paper=include.paper -%}{%- endcapture -%}
+{%- assign key_occurrence = 1 -%}
+{%- assign key_files_seen = '|' -%}
+{%- assign key_entry_found = false -%}
+{%- for key_list in site.publication_list -%}
+  {%- capture key_file_marker -%}|{{ key_list.file }}|{%- endcapture -%}
+  {%- unless key_files_seen contains key_file_marker -%}
+    {%- assign key_files_seen = key_files_seen | append: key_list.file | append: '|' -%}
+    {%- for key_candidate in site.data[key_list.file] -%}
+      {%- if key_list.file == include.file and forloop.index == include.index -%}
+        {%- assign key_entry_found = true -%}
+        {%- break -%}
+      {%- endif -%}
+      {%- capture candidate_key -%}{%- include bibtex_key_base.html paper=key_candidate -%}{%- endcapture -%}
+      {%- if candidate_key == short_key -%}
+        {%- assign key_occurrence = key_occurrence | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endunless -%}
+  {%- if key_entry_found -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{{- short_key -}}{%- if key_occurrence > 1 -%}-{{- key_occurrence -}}{%- endif -%}

@@ -53,6 +53,9 @@
           <a href="{{ link.url }}" target="_blank">{{ link_label }}</a>{%- unless forloop.last %}&nbsp;|&nbsp;{%- endunless -%}
         {%- endfor -%}
       {%- endif -%}
+      {%- if item.urls -%}&nbsp;|&nbsp;{%- else -%}<br>{%- endif -%}
+      <a class="collapse-clicker" onclick="$(this).closest('li').children('[data-collapse-panel=bibtex]').slideToggle(200)">Bibtex</a>
+      {%- include publication_bibtex_panel.html paper=item style='thesis' file=include.file index=forloop.index -%}
     </li>
   {%- endfor -%}
   </ol>

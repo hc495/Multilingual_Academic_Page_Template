@@ -1,0 +1,8 @@
+{%- capture generated_bibtex -%}
+  {%- include publication_bibtex.html paper=include.paper style=include.style file=include.file index=include.index -%}
+{%- endcapture -%}
+<div class="collapse" data-collapse-panel="bibtex">
+  <div class="panel panel-primary">
+    <div class="panel-body details-panel">{{ generated_bibtex | strip | escape }}</div>
+  </div>
+</div>

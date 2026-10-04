@@ -76,6 +76,16 @@ You may add or remove publication types in _config.yml according to your needs, 
 {:.lang .lang-en}
 
 **Publication List Source.** The YAML files in the `data/` directory store detailed information about publications; see the examples for details.
+
+BibTeX citations are generated from publication metadata during the Jekyll build;
+any manually supplied `bibtex` field is ignored. Authors are resolved through
+`authors.yml`, and venues through `venues.yml`. All page languages show the same
+citation. Journal venues can set `entry_type: article` and a `journal` name.
+Citation keys use the first author's surname, year, and first title word (e.g.
+`cho2026mechanism`); duplicate keys get a numeric suffix such as `-2`.
+Optional paper fields include `booktitle`, `journal`, `volume`, `number`, `doi`,
+`organization`, and `article_pages`. A `page.from` / `page.to` range becomes the
+BibTeX `pages` field; the website's `pages` count is not used as pagination.
 Please note that the filenames `authors.yml` and `venues.yml` in the `data/` directory are reserved keywords and must not be changed, even if you do not use them. These files define shorthand entries for authors and venues, allowing them to be conveniently referenced in publication records. If an author or venue is not registered in these files, their information can also be specified directly as a string.
 Note that a venue and its impact factor and H5 Index data must be registered in venues.yml in order for it to be included in the cumulative statistics of impact factor and H5 Index.
 {:.lang .lang-en}

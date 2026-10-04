@@ -1,0 +1,6 @@
+{%- comment -%}Escape plain metadata for a braced BibTeX field; HTML escaping happens in the panel.{%- endcomment -%}
+{%- assign bib_field_value = include.value | append: '' | replace: '\', '\textbackslash{}' | replace: '{', '\{' | replace: '}', '\}' | replace: '&', '\\&' | replace: '%', '\%' | replace: '_', '\_' | replace: '#', '\#' | replace: '$', '\$' | replace: '~', '\textasciitilde{}' | replace: '^', '\textasciicircum{}' | replace: '\textbackslash\{\}', '\textbackslash{}' -%}
+{%- if include.name == 'title' -%}
+  {%- assign bib_field_value = bib_field_value | prepend: '{' | append: '}' -%}
+{%- endif -%}
+{{- include.newline }}  {{ include.name }} = { {{- bib_field_value -}} },{{- '' -}}

@@ -1,0 +1,90 @@
+{%- comment -%}
+Build every citation from structured metadata. A legacy paper.bibtex is deliberately ignored.
+Use the English metadata on every page so changing the UI language does not change the citation.
+{%- endcomment -%}
+{%- assign bib_paper = include.paper -%}
+{%- assign bib_title = bib_paper.title.en | default: bib_paper.title -%}
+{%- assign bib_venue = site.data.venues[bib_paper.venue] -%}
+{%- assign bib_venue_name = bib_paper.booktitle | default: bib_paper.journal | default: bib_venue.journal | default: bib_venue.name | default: bib_paper.venue -%}
+{%- assign bib_type = bib_venue.entry_type | default: 'inproceedings' -%}
+{%- assign bib_arxiv = '' -%}
+{%- assign bib_url = bib_paper.basic_url | default: bib_paper.urls.first.url -%}
+{%- if include.style == 'preprint' -%}
+  {%- assign bib_type = 'misc' -%}
+  {%- assign bib_arxiv_url = '' -%}
+  {%- if bib_url contains 'arxiv.org/abs/' or bib_url contains 'arxiv.org/pdf/' -%}
+    {%- assign bib_arxiv_url = bib_url -%}
+  {%- else -%}
+    {%- for bib_link in bib_paper.urls -%}
+      {%- if bib_link.url contains 'arxiv.org/abs/' or bib_link.url contains 'arxiv.org/pdf/' -%}
+        {%- assign bib_arxiv_url = bib_link.url -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if bib_arxiv_url != empty -%}
+    {%- assign bib_arxiv = bib_arxiv_url | split: 'arxiv.org/' | last | remove_first: 'abs/' | remove_first: 'pdf/' | split: '?' | first | split: '#' | first | remove: '.pdf' -%}
+    {%- assign bib_type = 'article' -%}
+    {%- assign bib_venue_name = 'arXiv preprint arXiv:' | append: bib_arxiv -%}
+  {%- endif -%}
+{%- elsif include.style == 'thesis' -%}
+  {%- assign bib_degree = bib_paper.degree.en | default: bib_paper.degree -%}
+  {%- assign bib_school = bib_paper.institution.en | default: bib_paper.institution -%}
+  {%- assign bib_type = 'misc' -%}
+  {%- if bib_degree contains 'Ph.D.' or bib_degree contains 'Doctor' -%}
+    {%- assign bib_type = 'phdthesis' -%}
+  {%- elsif bib_degree contains 'Master' -%}
+    {%- assign bib_type = 'mastersthesis' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- capture bib_authors -%}
+  {%- for bib_author in bib_paper.authors -%}
+    {%- unless forloop.first %} and {% endunless -%}
+    {%- assign bib_author_name = site.data.authors[bib_author.name].name | default: bib_author.name -%}
+    {%- if bib_author_name == 'et al.' or bib_author_name == 'et al' -%}others{%- else -%}{{ bib_author_name }}{%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- capture bib_key -%}{%- include publication_bibtex_key.html paper=bib_paper file=include.file index=include.index -%}{%- endcapture -%}
+{%- capture bib_newline %}
+{% endcapture -%}
+@{{ bib_type }}{ {{- bib_key -}},
+{%- include bibtex_field.html name='title' value=bib_title newline=bib_newline -%}
+{%- include bibtex_field.html name='author' value=bib_authors newline=bib_newline -%}
+{%- include bibtex_field.html name='year' value=bib_paper.year newline=bib_newline -%}
+{%- if bib_type == 'inproceedings' -%}
+  {%- include bibtex_field.html name='booktitle' value=bib_venue_name newline=bib_newline -%}
+{%- elsif bib_type == 'article' -%}
+  {%- include bibtex_field.html name='journal' value=bib_venue_name newline=bib_newline -%}
+{%- elsif include.style == 'preprint' -%}
+  {%- include bibtex_field.html name='note' value='Preprint' newline=bib_newline -%}
+{%- endif -%}
+{%- if include.style == 'thesis' -%}
+  {%- if bib_type == 'misc' -%}
+    {%- include bibtex_field.html name='howpublished' value=bib_degree newline=bib_newline -%}
+    {%- include bibtex_field.html name='institution' value=bib_school newline=bib_newline -%}
+  {%- else -%}
+    {%- include bibtex_field.html name='school' value=bib_school newline=bib_newline -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if bib_paper.volume -%}{%- include bibtex_field.html name='volume' value=bib_paper.volume newline=bib_newline -%}{%- endif -%}
+{%- if bib_paper.number -%}{%- include bibtex_field.html name='number' value=bib_paper.number newline=bib_newline -%}{%- endif -%}
+{%- if bib_paper.organization -%}{%- include bibtex_field.html name='organization' value=bib_paper.organization newline=bib_newline -%}{%- endif -%}
+{%- assign bib_pages = bib_paper.article_pages -%}
+{%- if bib_paper.page.from -%}
+  {%- assign bib_pages = bib_paper.page.from | append: '' -%}
+  {%- if bib_paper.page.to and bib_paper.page.to != bib_paper.page.from -%}
+    {%- assign bib_pages = bib_pages | append: '--' | append: bib_paper.page.to -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if bib_pages -%}{%- include bibtex_field.html name='pages' value=bib_pages newline=bib_newline -%}{%- endif -%}
+{%- if bib_paper.doi -%}
+  {{- bib_newline }}  doi = { {{- bib_paper.doi -}} },
+{%- endif -%}
+{%- if bib_arxiv != empty -%}
+  {%- include bibtex_field.html name='eprint' value=bib_arxiv newline=bib_newline -%}
+  {%- include bibtex_field.html name='archivePrefix' value='arXiv' newline=bib_newline -%}
+{%- endif -%}
+{%- if bib_url -%}
+  {{- bib_newline }}  url = { {{- bib_url -}} },
+{%- endif -%}
+{{- bib_newline -}}}

@@ -363,6 +363,12 @@ ul {
     border: {{ site.details_panel.border }};
 }
 
+[data-collapse-panel="bibtex"] .details-panel {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+
 .end-mark{
   margin: 52px auto 32px;
   width: 75%;

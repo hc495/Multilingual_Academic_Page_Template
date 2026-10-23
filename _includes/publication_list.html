@@ -1,4 +1,5 @@
 {%- assign current_lang = include.lang -%}
+{%- assign publication_offset = 0 -%}
 
 <div class="publication-list" data-publication-list data-lang="{{ current_lang }}">
 {%- for item in site.publication_list -%}
@@ -28,7 +29,7 @@
                 <div class="lang lang-{{ current_lang }} active" style="font-size:calc({{ site.font_scale }} * 0.9); margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
             {%- endif -%}
                 <div class="lang lang-{{ current_lang }} active">
-            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang -%}
+            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang offset=publication_offset -%}
             </div>
             </details>
         {%- endif -%}
@@ -45,10 +46,14 @@
                 <div class="lang lang-{{ current_lang }} active" style="font-size:0.9em; margin-bottom: 16px">{{ item.instructions[current_lang] | escape }}</div>
             {%- endif -%}
             <div class="lang lang-{{ current_lang }} active">
-            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang -%}
+            {%- include publication_list_style/index.html style=item.style file=item.file lang=current_lang offset=publication_offset -%}
             </div>
             </div>
         {%- endif -%}
+    {%- endif -%}
+    {%- if item.title[current_lang] -%}
+        {%- assign section_size = site.data[item.file] | size -%}
+        {%- assign publication_offset = publication_offset | plus: section_size -%}
     {%- endif -%}
 {%- endfor -%}
 </div>

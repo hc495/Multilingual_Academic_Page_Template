@@ -2,13 +2,6 @@
 {%- assign venues = site.data.venues -%}
 {%- assign know_authors = site.data.authors -%}
 
-<style>
-ol.international_conf li::marker {
-  content: "[c" counter(list-item) "]. ";
-  font-weight: bold;
-}
-</style>
-
 {%- if papers -%}
     <div class="wide_list">
     <ol class="international_conf">
@@ -58,9 +51,9 @@ ol.international_conf li::marker {
         {%- assign urls = item.urls -%}
         
         {%- if item.basic_url -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li value="{{ forloop.index | plus: include.offset }}" class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<strong>{{ title }}</strong><br>
+            <li value="{{ forloop.index | plus: include.offset }}" class="publication-item" data-year="{{ year }}" data-venue="{{ venue | escape }}" data-filter-venue="{{ venue_filter_key | escape }}" data-venue-label="{{ venue_filter_label | escape }}" data-venue-filterable="{{ venue_show_in_filter }}" data-venue-high-priority="{{ venue_high_priority }}" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}">{%- if venue_short -%}<span class="venue"> <strong>{{ venue_short }} {{year}}</strong> </span> &nbsp;{%- endif -%}<strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

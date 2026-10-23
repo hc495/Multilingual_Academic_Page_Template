@@ -1,13 +1,6 @@
 {%- assign papers = site.data[include.file] -%}
 {%- assign know_authors = site.data.authors -%}
 
-<style>
-    ol.preprint li::marker {
-      content: "[p" counter(list-item) "]. ";
-      font-weight: bold;
-    }
-</style>
-
 {%- if papers -%}
     <div class="wide_list">
     <ol class="preprint">
@@ -25,9 +18,9 @@
         {%- endif -%}
     
         {%- if item.basic_url -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
+            <li value="{{ forloop.index | plus: include.offset }}" class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><a href="{{ basic_url }}" target="_blank"><strong>{{ title }}</strong></a><br>
         {%- else -%}
-            <li class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><strong>{{ title }}</strong><br>
+            <li value="{{ forloop.index | plus: include.offset }}" class="publication-item" data-year="{{ year }}" data-venue="__preprint__" data-filter-venue="__preprint__" data-venue-filterable="true" data-venue-high-priority="false" data-awarded="{{ is_awarded }}" data-tags="{{ item.tags | jsonify | escape }}"><strong>{{ title }}</strong><br>
         {%- endif -%}
         {%- for author in authors -%}
             {%- if know_authors[author.name] -%}

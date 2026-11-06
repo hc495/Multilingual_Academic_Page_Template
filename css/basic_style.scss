@@ -328,16 +328,43 @@ div.img_margin {
     padding-left: 2.5em !important;
 }
 
-.wide_list ol, .wide_list ul {
-    li {
-        margin-bottom: 1.25em;
-    }
+.wide_list {
+    --wide-list-card-background: {{ site.wide_list_card.background_color | default: 'rgba(255, 255, 255, 0.7)' }};
+    --wide-list-card-border-color: {{ site.wide_list_card.border_color | default: '#d6e2ef' }};
+    --wide-list-card-border-width: {{ site.wide_list_card.border_width | default: '1px' }};
+    --wide-list-card-radius: {{ site.wide_list_card.border_radius | default: '8px' }};
+    --wide-list-card-padding: {{ site.wide_list_card.padding | default: '0.85em 1em' }};
+    --wide-list-card-spacing: {{ site.wide_list_card.spacing | default: '0.85em' }};
+    --wide-list-card-shadow: {{ site.wide_list_card.box_shadow | default: 'none' }};
+    --wide-list-card-mobile-padding: {{ site.wide_list_card.mobile_padding | default: '0.65em 0.75em' }};
 }
 
-ol.wide_list, ul.wide_list {
-    li {
-        margin-bottom: 1.25em;
-    }
+// Support both publication wrappers and Markdown lists with wide_list on the list itself.
+.markdown-body .wide_list > ol,
+.markdown-body .wide_list > ul,
+.markdown-body ol.wide_list,
+.markdown-body ul.wide_list {
+    padding-left: 0 !important;
+    list-style-position: inside;
+}
+
+.wide_list > ul,
+ul.wide_list {
+    list-style-type: none;
+}
+
+.wide_list > ol > li,
+.wide_list > ul > li,
+ol.wide_list > li,
+ul.wide_list > li {
+    box-sizing: border-box;
+    margin: 0 0 var(--wide-list-card-spacing);
+    padding: var(--wide-list-card-padding);
+    border: var(--wide-list-card-border-width) solid var(--wide-list-card-border-color);
+    border-radius: var(--wide-list-card-radius);
+    background-color: var(--wide-list-card-background);
+    box-shadow: var(--wide-list-card-shadow);
+    overflow-wrap: anywhere;
 }
 
 // Increase spacing between list items
@@ -517,6 +544,7 @@ details[open] > summary::before {
   gap: 0.38em;
 }
 
+.publication-filter-toggle,
 .publication-filter-chip,
 .publication-filter-clear {
   appearance: none;
@@ -532,6 +560,7 @@ details[open] > summary::before {
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 }
 
+.publication-filter-toggle:hover,
 .publication-filter-chip:hover,
 .publication-filter-clear:hover:not(:disabled) {
   background: var(--publication-filter-hover);
@@ -549,6 +578,7 @@ details[open] > summary::before {
   opacity: 0.72;
 }
 
+.publication-filter-toggle:focus-visible,
 .publication-filter-chip:focus-visible,
 .publication-filter-clear:focus-visible {
   outline: 2px solid var(--publication-filter-active-border);
@@ -573,6 +603,8 @@ details[open] > summary::before {
   opacity: 0.72;
 }
 
+.publication-filter-controls[hidden],
+.publication-filter-toggle[hidden],
 .publication-item[hidden],
 [data-publication-section][hidden] {
   display: none !important;

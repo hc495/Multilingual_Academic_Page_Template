@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+export GEM_HOME="$PWD/vendor/bootstrap"
+export BUNDLE_GEMFILE="$PWD/Gemfile"
+
+# Bundler 2.4 also supports the Ruby 2.6 supplied with macOS.
+if [ ! -f "$GEM_HOME/gems/bundler-2.4.22/exe/bundle" ]; then
+    gem install bundler --version 2.4.22 --install-dir "$GEM_HOME" --no-document
+fi
+
+ruby "$GEM_HOME/gems/bundler-2.4.22/exe/bundle" config set --local path vendor/bundle
+ruby "$GEM_HOME/gems/bundler-2.4.22/exe/bundle" install

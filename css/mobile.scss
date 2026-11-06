@@ -2,6 +2,13 @@
 ---
 
 @media (max-width: 800px) {
+    .wide_list > ol > li,
+    .wide_list > ul > li,
+    ol.wide_list > li,
+    ul.wide_list > li {
+        padding: var(--wide-list-card-mobile-padding);
+    }
+
     .markdown-body h1 {
         font-size: 1.5em;
         text-align: justify;

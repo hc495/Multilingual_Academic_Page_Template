@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+export GEM_HOME="$PWD/vendor/bootstrap"
+export BUNDLE_GEMFILE="$PWD/Gemfile"
+
+if [ ! -f "$GEM_HOME/gems/bundler-2.4.22/exe/bundle" ]; then
+    echo "Run ./scripts/setup first to install the local dependencies." >&2
+    exit 1
+fi
+
+exec ruby "$GEM_HOME/gems/bundler-2.4.22/exe/bundle" exec jekyll "$@"

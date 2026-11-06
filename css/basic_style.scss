@@ -427,6 +427,7 @@ span.award {
   {%- endif -%}
   padding: 0px 4px;
   border-radius: 6px;
+  border: 1px solid {{ site.font_colors.link_normal }};
   background: {{ site.conference_badge.background_color }}; 
   font-size: {{ site.font_scale }};
   font-weight: bold;

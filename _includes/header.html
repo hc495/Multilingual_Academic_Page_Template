@@ -28,6 +28,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{% if site.night_mode.enabled %}
+<!-- Apply the saved theme before styles load to avoid a light flash. -->
+<script src="{{ '/assets/theme.js' | relative_url }}" data-default-theme="{{ site.night_mode.default | default: 'system' }}"></script>
+{% endif %}
 <link rel="stylesheet" href="{{ "/css/basic_style.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/css/toc_and_top_bar.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "/css/mobile.css" | relative_url }}">
@@ -66,4 +70,7 @@
 
 {{ site.more_heads }}
 
+{% if site.night_mode.enabled %}
+<link rel="stylesheet" href="{{ '/css/night_mode.css' | relative_url }}">
+{% endif %}
 </head>
